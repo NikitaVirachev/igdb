@@ -3,9 +3,108 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap"
+      rel="stylesheet"
+    />
+
     <title>Top Games</title>
   </head>
   <body>
-    <h1>Hello, Games!</h1>
+    <div class="wrapper--dark-grey">
+      <header class="header">
+        <a href="#" class="header__logo"></a>
+
+        <div class="header__search">
+          <form id="search" class="search" action="">
+            <input
+              class="search__input input"
+              type="search"
+              placeholder="Search"
+              name="search"
+              id="search-input"
+            />
+            <button class="search__submit" type="submit">
+              <svg class="search__icon">
+                <use xlink:href="/src/img/sprite.svg#icon-search"></use>
+              </svg>
+            </button>
+          </form>
+        </div>
+
+        <nav class="header__nav">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a class="nav__link" href="#">
+                <div class="nav__content">
+                  <svg class="nav__icon nav__icon--games">
+                    <use xlink:href="/src/img/sprite.svg#icon-gamepad"></use>
+                  </svg>
+                  <span class="nav__title">games</span>
+                  <svg class="nav__caret">
+                    <use xlink:href="/src/img/sprite.svg#icon-caret-down"></use>
+                  </svg>
+                </div>
+              </a>
+            </li>
+
+            <li class="nav__item">
+              <a class="nav__link" href="#">
+                <div class="nav__content">
+                  <svg class="nav__icon nav__icon--database">
+                    <use xlink:href="/src/img/sprite.svg#icon-database"></use>
+                  </svg>
+                  <span class="nav__title">database</span>
+                  <svg class="nav__caret">
+                    <use xlink:href="/src/img/sprite.svg#icon-caret-down"></use>
+                  </svg>
+                </div>
+              </a>
+            </li>
+
+            <li class="nav__item">
+              <a class="nav__link" href="#">
+                <div class="nav__content">
+                  <svg class="nav__icon nav__icon--community">
+                    <use xlink:href="/src/img/sprite.svg#icon-group"></use>
+                  </svg>
+                  <span class="nav__title">community</span>
+                  <svg class="nav__caret">
+                    <use xlink:href="/src/img/sprite.svg#icon-caret-down"></use>
+                  </svg>
+                </div>
+              </a>
+            </li>
+
+            <li class="nav__item">
+              <a class="nav__link" href="#">
+                <div class="nav__content">
+                  <svg class="nav__icon nav__icon--help">
+                    <use
+                      xlink:href="/src/img/sprite.svg#icon-question-circle"
+                    ></use>
+                  </svg>
+                  <span class="nav__title">help</span>
+                  <svg class="nav__caret">
+                    <use xlink:href="/src/img/sprite.svg#icon-caret-down"></use>
+                  </svg>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <a href="#" class="header__login">
+          <!-- <span class="header__login-icon"></span> -->
+          <svg class="header__login-icon">
+            <use xlink:href="/src/img/sprite.svg#icon-twitch"></use>
+          </svg>
+          <span>Login with Twitch</span>
+        </a>
+      </header>
+    </div>
   </body>
 </html>

@@ -1,1 +1,13 @@
-@import '../../libs/normalize';
+@import '../vendors/normalize';
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+body {
+  box-sizing: border-box;
+}

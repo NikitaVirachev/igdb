@@ -4,5 +4,10 @@
 @import './base/typography';
 
 @import './layout/header';
+@import './layout/wrapper';
+
+@import './components/input';
+@import './components/navigation';
+@import './components/search';
 
 @import './pages/top-games';

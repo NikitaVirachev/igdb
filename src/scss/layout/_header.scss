@@ -1,0 +1,49 @@
+.header {
+  font-family: 'Poppins', sans-serif;
+  color: var(--white-color);
+
+  height: 5rem;
+  max-width: 128rem;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  gap: 2rem;
+
+  &__logo {
+    background: center/cover url('../img/logo-72x72.png');
+    height: 5rem;
+    width: 5rem;
+  }
+
+  &__login:link,
+  &__login:visited {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 1.5rem;
+
+    background: var(--primary-color);
+    font-size: 1.2rem;
+    color: var(--white-color);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  &__login:hover,
+  &__login:active {
+    background: var(--dark-primary-color);
+  }
+
+  &__login-icon {
+    height: 1.6rem;
+    width: 1.6rem;
+    fill: var(--white-color);
+  }
+
+  &__search {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+}

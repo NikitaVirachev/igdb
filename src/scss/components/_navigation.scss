@@ -1,0 +1,69 @@
+.nav {
+  &__list {
+    list-style: none;
+    height: 100%;
+
+    display: flex;
+  }
+
+  &__item {
+    display: flex;
+  }
+
+  &__link:link,
+  &__link:visited {
+    font-size: 1.2rem;
+    color: var(--white-color);
+    text-decoration: none;
+    text-transform: uppercase;
+
+    display: flex;
+    // align-content: center;
+    align-items: center;
+    padding: 0 1.5rem;
+  }
+
+  &__link:hover,
+  &__link:active {
+    color: var(--dark-primary-color);
+
+    .nav__icon,
+    .nav__caret {
+      fill: var(--dark-primary-color);
+    }
+  }
+
+  &__content {
+    display: flex;
+    gap: 0.4rem;
+    // align-items: center;
+  }
+
+  &__icon,
+  &__caret {
+    height: 1.3rem;
+    fill: var(--white-color);
+  }
+
+  &__icon {
+    &--games {
+      width: 1.5rem;
+    }
+
+    &--database {
+      width: 1.5rem;
+    }
+
+    &--community {
+      width: 1.5rem;
+    }
+
+    &--help {
+      width: 1.5rem;
+    }
+  }
+
+  &__caret {
+    width: 0.7rem;
+  }
+}

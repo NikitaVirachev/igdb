@@ -6,7 +6,15 @@
     background: var(--light-grey-color-2);
     border-right: none;
     border-radius: 0.4rem 0 0 0.4rem;
-    width: 17rem;
+    width: 26rem;
+
+    @include respond(tab-land) {
+      width: 17rem;
+    }
+
+    @include respond(tab-port) {
+      width: 11rem;
+    }
 
     &:focus {
       outline: none;

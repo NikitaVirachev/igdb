@@ -37,9 +37,15 @@ const controlMenuClick = function (e) {
   dropdownMenuView.hideDropdownMenu();
 };
 
+const controlNavbarBurgerBtnClick = function (e) {
+  e.preventDefault();
+  console.log('Burger');
+};
+
 export const init = function () {
   view.addHandlSubmitForm(controlSubmitForm);
   navbarView.addHandleMenuClick(controlNavbarClick);
   dropdownMenuView.addHandleMenuClick(controlDropdownMenuClick);
   window.addEventListener('click', controlMenuClick);
+  navbarView.addHandleBurgerBtnClick(controlNavbarBurgerBtnClick);
 };

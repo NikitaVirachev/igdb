@@ -2,18 +2,30 @@
   font-family: 'Poppins', sans-serif;
   color: var(--white-color);
 
-  height: 5rem;
+  // height: 5rem;
   max-width: 128rem;
   margin: 0 auto;
 
   display: grid;
   grid-template-columns: auto auto 1fr auto;
+  grid-template-rows: 5rem;
   gap: 2rem;
+  align-items: center;
+
+  @include respond(tab-port) {
+    padding-bottom: 1rem;
+  }
+
+  @include respond(phone) {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 5rem 5rem;
+  }
 
   &__logo {
     background: center/cover url('../img/logo-72x72.png');
     height: 5rem;
     width: 5rem;
+    margin-left: 1rem;
   }
 
   &__login:link,
@@ -22,6 +34,7 @@
     align-items: center;
     gap: 0.5rem;
     padding: 0 1.5rem;
+    height: 5rem;
 
     background: var(--primary-color);
     font-size: 1.2rem;
@@ -45,5 +58,24 @@
     height: 100%;
     display: flex;
     align-items: center;
+
+    @include respond(phone) {
+      display: none;
+    }
+  }
+
+  &__nav {
+    @include respond(phone) {
+      display: none;
+    }
+  }
+
+  &__burder {
+    display: none;
+    justify-self: end;
+
+    @include respond(phone) {
+      display: block;
+    }
   }
 }

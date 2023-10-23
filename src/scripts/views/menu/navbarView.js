@@ -1,6 +1,8 @@
 import MenuView from './menuView.js';
 
 class NavbarView extends MenuView {
+  _burgerBtn = document.querySelector('#navbar-burger-btn');
+
   addhandleScreenAreaClick(handler) {
     this._screenArea.addEventListener('click', handler);
   }
@@ -13,6 +15,10 @@ class NavbarView extends MenuView {
     this._container
       .querySelectorAll('.navbar__link')
       .forEach((menu) => menu.classList.remove('navbar__link--primary'));
+  }
+
+  addHandleBurgerBtnClick(handler) {
+    this._burgerBtn.addEventListener('click', handler);
   }
 }
 

@@ -1,14 +1,15 @@
 @import './abstracts/variables';
 
+@import './base/base';
 @import './base/reset';
 @import './base/typography';
 
 @import './layout/header';
 @import './layout/wrapper';
 
+@import './components/dropdown-menu';
 @import './components/input';
-@import './components/nav-menu';
-@import './components/navigation';
+@import './components/navbar';
 @import './components/search';
 
 @import './pages/top-games';

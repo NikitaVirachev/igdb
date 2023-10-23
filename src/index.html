@@ -35,18 +35,23 @@
           </form>
         </div>
 
-        <nav class="header__nav">
-          <ul class="nav__list">
-            <li class="nav__item">
-              <a class="nav__link" href="#">
-                <div class="nav__content">
-                  <svg class="nav__icon nav__icon--games">
+        <nav id="navbar" class="header__nav">
+          <ul class="navbar__list">
+            <li class="navbar__item">
+              <a
+                class="navbar__link"
+                id="games-navbar"
+                data-section="games"
+                href="#"
+              >
+                <div class="navbar__content">
+                  <svg class="navbar__icon navbar__icon--games">
                     <use
                       xlink:href="/src/img/header-sprite.svg#icon-gamepad"
                     ></use>
                   </svg>
-                  <span class="nav__title">games</span>
-                  <svg class="nav__caret">
+                  <span class="navbar__title">games</span>
+                  <svg class="navbar__caret">
                     <use
                       xlink:href="/src/img/header-sprite.svg#icon-caret-down"
                     ></use>
@@ -54,75 +59,330 @@
                 </div>
               </a>
 
-              <div class="nav-menu">
-                <div class="nav-menu__content-block">
-                  <ul class="nav-menu__items">
-                    <li class="nav-menu__item">
-                      <a class="nav-menu__link" href="#">
-                        <div class="nav-menu__icon"></div>
-                        <div class="nav-menu__title"></div>
+              <div
+                class="dropdown-menu dropdown-menu--hide"
+                id="games-dropdown-menu"
+                data-section="games"
+              >
+                <div class="dropdown-menu__content-block">
+                  <ul class="dropdown-menu__items">
+                    <li class="dropdown-menu__item">
+                      <a class="dropdown-menu__link" href="#">
+                        <svg class="dropdown-menu__icon">
+                          <use
+                            xlink:href="/src/img/dropdown-menu-sprite.svg#icon-binoculars"
+                          ></use>
+                        </svg>
+                        Discover
                       </a>
                     </li>
-                    <li class="nav-menu__item"></li>
-                    <li class="nav-menu__item"></li>
+
+                    <li class="dropdown-menu__item">
+                      <a class="dropdown-menu__link" href="#">
+                        <svg class="dropdown-menu__icon">
+                          <use
+                            xlink:href="/src/img/dropdown-menu-sprite.svg#icon-thumbs-o-up"
+                          ></use>
+                        </svg>
+                        Reviews
+                      </a>
+                    </li>
+
+                    <li class="dropdown-menu__item">
+                      <a class="dropdown-menu__link" href="#">
+                        <svg class="dropdown-menu__icon">
+                          <use
+                            xlink:href="/src/img/dropdown-menu-sprite.svg#icon-search-plus"
+                          ></use>
+                        </svg>
+                        Advanced Search
+                      </a>
+                    </li>
                   </ul>
                 </div>
-                <div class="nav-menu__separator"></div>
+
+                <div class="dropdown-menu__separator"></div>
+
+                <div class="dropdown-menu__content-block">
+                  <ul class="dropdown-menu__items">
+                    <li class="dropdown-menu__item">
+                      <a class="dropdown-menu__link" href="#">
+                        <svg class="dropdown-menu__icon">
+                          <use
+                            xlink:href="/src/img/dropdown-menu-sprite.svg#icon-hourglass-3"
+                          ></use>
+                        </svg>
+                        Coming Soon
+                      </a>
+                    </li>
+
+                    <li class="dropdown-menu__item">
+                      <a class="dropdown-menu__link" href="#">
+                        <svg class="dropdown-menu__icon">
+                          <use
+                            xlink:href="/src/img/dropdown-menu-sprite.svg#icon-truck"
+                          ></use>
+                        </svg>
+                        Recently Released
+                      </a>
+                    </li>
+
+                    <li class="dropdown-menu__item">
+                      <a class="dropdown-menu__link" href="#">
+                        <svg class="dropdown-menu__icon">
+                          <use
+                            xlink:href="/src/img/dropdown-menu-sprite.svg#icon-line-chart"
+                          ></use>
+                        </svg>
+                        Top 100
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="dropdown-menu__separator"></div>
+
+                <div class="dropdown-menu__content-block">
+                  <ul class="dropdown-menu__items">
+                    <li class="dropdown-menu__item">
+                      <a class="dropdown-menu__link" href="#">
+                        <svg class="dropdown-menu__icon">
+                          <use
+                            xlink:href="/src/img/dropdown-menu-sprite.svg#icon-plus-circle"
+                          ></use>
+                        </svg>
+                        Add Game
+                      </a>
+                    </li>
+
+                    <li class="dropdown-menu__item">
+                      <a class="dropdown-menu__link" href="#">
+                        <svg class="dropdown-menu__icon">
+                          <use
+                            xlink:href="/src/img/dropdown-menu-sprite.svg#icon-plus-circle"
+                          ></use>
+                        </svg>
+                        Add Company
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </li>
 
-            <li class="nav__item">
-              <a class="nav__link" href="#">
-                <div class="nav__content">
-                  <svg class="nav__icon nav__icon--database">
+            <li class="navbar__item">
+              <a
+                class="navbar__link"
+                id="database-navbar"
+                data-section="database"
+                href="#"
+              >
+                <div class="navbar__content">
+                  <svg class="navbar__icon navbar__icon--database">
                     <use
                       xlink:href="/src/img/header-sprite.svg#icon-database"
                     ></use>
                   </svg>
-                  <span class="nav__title">database</span>
-                  <svg class="nav__caret">
+                  <span class="navbar__title">database</span>
+                  <svg class="navbar__caret">
                     <use
                       xlink:href="/src/img/header-sprite.svg#icon-caret-down"
                     ></use>
                   </svg>
                 </div>
               </a>
+
+              <div
+                class="dropdown-menu dropdown-menu--hide"
+                id="database-dropdown-menu"
+                data-section="database"
+              >
+                <div class="dropdown-menu__content-block">
+                  <ul class="dropdown-menu__items">
+                    <li class="dropdown-menu__item">
+                      <a class="dropdown-menu__link" href="#">
+                        <svg class="dropdown-menu__icon">
+                          <use
+                            xlink:href="/src/img/header-sprite.svg#icon-gamepad"
+                          ></use>
+                        </svg>
+                        Games
+                      </a>
+                    </li>
+
+                    <li class="dropdown-menu__item">
+                      <a class="dropdown-menu__link" href="#">
+                        <svg class="dropdown-menu__icon">
+                          <use
+                            xlink:href="/src/img/dropdown-menu-sprite.svg#icon-display"
+                          ></use>
+                        </svg>
+                        Platforms
+                      </a>
+                    </li>
+
+                    <li class="dropdown-menu__item">
+                      <a class="dropdown-menu__link" href="#">
+                        <svg class="dropdown-menu__icon">
+                          <use
+                            xlink:href="/src/img/dropdown-menu-sprite.svg#icon-clock2"
+                          ></use>
+                        </svg>
+                        Events
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="dropdown-menu__separator"></div>
+
+                <div class="dropdown-menu__content-block">
+                  <ul class="dropdown-menu__items">
+                    <li class="dropdown-menu__item">
+                      <a class="dropdown-menu__link" href="#">
+                        <svg class="dropdown-menu__icon">
+                          <use
+                            xlink:href="/src/img/dropdown-menu-sprite.svg#icon-dropbox"
+                          ></use>
+                        </svg>
+                        Developer API
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </li>
 
-            <li class="nav__item">
-              <a class="nav__link" href="#">
-                <div class="nav__content">
-                  <svg class="nav__icon nav__icon--community">
+            <li class="navbar__item">
+              <a
+                class="navbar__link"
+                id="community-navbar"
+                data-section="community"
+                href="#"
+              >
+                <div class="navbar__content">
+                  <svg class="navbar__icon navbar__icon--community">
                     <use
                       xlink:href="/src/img/header-sprite.svg#icon-group"
                     ></use>
                   </svg>
-                  <span class="nav__title">community</span>
-                  <svg class="nav__caret">
+                  <span class="navbar__title">community</span>
+                  <svg class="navbar__caret">
                     <use
                       xlink:href="/src/img/header-sprite.svg#icon-caret-down"
                     ></use>
                   </svg>
                 </div>
               </a>
+
+              <div
+                class="dropdown-menu dropdown-menu--hide"
+                id="community-dropdown-menu"
+                data-section="community"
+              >
+                <div class="dropdown-menu__content-block">
+                  <ul class="dropdown-menu__items">
+                    <li class="dropdown-menu__item">
+                      <a class="dropdown-menu__link" href="#">
+                        <svg class="dropdown-menu__icon">
+                          <use
+                            xlink:href="/src/img/dropdown-menu-sprite.svg#icon-pie-chart"
+                          ></use>
+                        </svg>
+                        Karma Hunters
+                      </a>
+                    </li>
+
+                    <li class="dropdown-menu__item">
+                      <a class="dropdown-menu__link" href="#">
+                        <svg class="dropdown-menu__icon">
+                          <use
+                            xlink:href="/src/img/dropdown-menu-sprite.svg#icon-discord"
+                          ></use>
+                        </svg>
+                        Discord
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </li>
 
-            <li class="nav__item">
-              <a class="nav__link" href="#">
-                <div class="nav__content">
-                  <svg class="nav__icon nav__icon--help">
+            <li class="navbar__item">
+              <a
+                class="navbar__link"
+                id="help-navbar"
+                data-section="help"
+                href="#"
+              >
+                <div class="navbar__content">
+                  <svg class="navbar__icon navbar__icon--help">
                     <use
                       xlink:href="/src/img/header-sprite.svg#icon-question-circle"
                     ></use>
                   </svg>
-                  <span class="nav__title">help</span>
-                  <svg class="nav__caret">
+                  <span class="navbar__title">help</span>
+                  <svg class="navbar__caret">
                     <use
                       xlink:href="/src/img/header-sprite.svg#icon-caret-down"
                     ></use>
                   </svg>
                 </div>
               </a>
+
+              <div
+                class="dropdown-menu dropdown-menu--hide"
+                id="help-dropdown-menu"
+                data-section="help"
+              >
+                <div class="dropdown-menu__content-block">
+                  <ul class="dropdown-menu__items">
+                    <li class="dropdown-menu__item">
+                      <a class="dropdown-menu__link" href="#">
+                        <svg class="dropdown-menu__icon">
+                          <use
+                            xlink:href="/src/img/dropdown-menu-sprite.svg#icon-information-solid"
+                          ></use>
+                        </svg>
+                        About IGDB
+                      </a>
+                    </li>
+
+                    <li class="dropdown-menu__item">
+                      <a class="dropdown-menu__link" href="#">
+                        <svg class="dropdown-menu__icon">
+                          <use
+                            xlink:href="/src/img/dropdown-menu-sprite.svg#icon-information-solid"
+                          ></use>
+                        </svg>
+                        Contributions
+                      </a>
+                    </li>
+
+                    <li class="dropdown-menu__item">
+                      <a class="dropdown-menu__link" href="#">
+                        <svg class="dropdown-menu__icon">
+                          <use
+                            xlink:href="/src/img/dropdown-menu-sprite.svg#icon-mic"
+                          ></use>
+                        </svg>
+                        UserVoice
+                      </a>
+                    </li>
+
+                    <li class="dropdown-menu__item">
+                      <a class="dropdown-menu__link" href="#">
+                        <svg class="dropdown-menu__icon">
+                          <use
+                            xlink:href="/src/img/dropdown-menu-sprite.svg#icon-envelope-o"
+                          ></use>
+                        </svg>
+                        Contact
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </li>
           </ul>
         </nav>

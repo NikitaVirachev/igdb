@@ -2,6 +2,7 @@ import * as model from './model.js';
 import view from './views/view.js';
 import navbarView from './views/menu/navbarView.js';
 import dropdownMenuView from './views/menu/dropdownMenuView.js';
+import asideNavView from './views/menu/asideNavView.js';
 
 const controlSubmitForm = function (e) {
   e.preventDefault();
@@ -42,10 +43,19 @@ const controlNavbarBurgerBtnClick = function (e) {
   navbarView.toggleNavbarCollapse();
 };
 
+const controlAsideNavClick = function (e) {
+  e.preventDefault();
+  const link = e.target.closest('.aside__link');
+  if (!link) return;
+  asideNavView.deactivateNavbar();
+  asideNavView.toggleNavbarLink(link);
+};
+
 export const init = function () {
   view.addHandlSubmitForm(controlSubmitForm);
   navbarView.addHandleMenuClick(controlNavbarClick);
   dropdownMenuView.addHandleMenuClick(controlDropdownMenuClick);
   window.addEventListener('click', controlMenuClick);
   navbarView.addHandleBurgerBtnClick(controlNavbarBurgerBtnClick);
+  asideNavView.addHandleMenuClick(controlAsideNavClick);
 };

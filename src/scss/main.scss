@@ -5,12 +5,15 @@
 @import './base/reset';
 @import './base/typography';
 
+@import './layout/aside';
+@import './layout/content';
 @import './layout/header';
 @import './layout/wrapper';
 
 @import './components/dropdown-menu';
 @import './components/input';
 @import './components/navbar';
+@import './components/pad';
 @import './components/search';
 
 @import './pages/top-games';

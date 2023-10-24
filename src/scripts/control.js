@@ -39,7 +39,7 @@ const controlMenuClick = function (e) {
 
 const controlNavbarBurgerBtnClick = function (e) {
   e.preventDefault();
-  console.log('Burger');
+  navbarView.toggleNavbarCollapse();
 };
 
 export const init = function () {

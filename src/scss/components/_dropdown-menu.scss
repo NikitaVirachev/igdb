@@ -9,10 +9,25 @@
 
   background: var(--primary-color);
 
+  @include respond(phone) {
+    background: inherit;
+  }
+
   &--hide {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+  }
+
+  @include respond(phone) {
+    position: relative;
+    display: block;
+    top: auto;
+    left: auto;
+
+    &--hide {
+      display: none;
+    }
   }
 
   &__content-block {
@@ -39,6 +54,10 @@
     padding: 0.9rem 2rem;
     width: 100%;
     vertical-align: middle;
+
+    @include respond(phone) {
+      padding: 0.5rem 1.5rem 0.5rem 2.5rem;
+    }
   }
 
   &__link:hover,
@@ -58,5 +77,9 @@
     height: 0.1rem;
     background: var(--white-color);
     margin: 0.3rem 0;
+
+    @include respond(phone) {
+      background: inherit;
+    }
   }
 }

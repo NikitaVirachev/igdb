@@ -1,17 +1,19 @@
 .content {
   max-width: var(--width-page);
   margin: 0 auto;
-  min-height: calc(100vh - 5rem);
+  // min-height: calc(100vh - 5rem);
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto auto;
 
-  @include respondMin(laptopXS) {
+  @include respondMin(laptopS) {
     grid-template-columns: 1fr 28.55rem;
     grid-template-rows: 1fr;
   }
 
-  &__aside {
-    padding: 0 1rem;
-  }
+  padding: 0 1.5rem;
+
+  // & > * {
+  //   padding: 0 1rem;
+  // }
 }

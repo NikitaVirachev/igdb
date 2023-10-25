@@ -1,0 +1,32 @@
+.login {
+  &:link,
+  &:visited {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 1.5rem;
+    height: 5rem;
+
+    background: var(--primary-color);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    color: var(--white-color);
+    text-decoration: none;
+    text-transform: uppercase;
+
+    @include respondMax(laptopXS) {
+      margin: 0.75rem 0;
+    }
+  }
+
+  &:hover,
+  &:active {
+    background: var(--dark-primary-color);
+  }
+
+  &__icon {
+    height: 1.6rem;
+    width: 1.6rem;
+    fill: var(--white-color);
+  }
+}

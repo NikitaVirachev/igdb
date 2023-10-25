@@ -1,0 +1,21 @@
+.burger {
+  margin: 0.8rem 1rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--dark-grey-color);
+  background: inherit;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--dark-grey-color);
+  }
+
+  &__line {
+    width: 2.2rem;
+    height: 0.2rem;
+    background: var(--white-color);
+
+    &:not(:first-child) {
+      margin-top: 0.4rem;
+    }
+  }
+}

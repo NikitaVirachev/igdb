@@ -13,11 +13,6 @@
     flex-direction: column;
   }
 
-  &__list {
-    list-style-type: none;
-    display: inline-block;
-  }
-
   &__link:link,
   &__link:visited {
     text-decoration: none;

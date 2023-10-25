@@ -9,10 +9,6 @@
 
   background: var(--primary-color);
 
-  @include respondMax(laptopXS) {
-    background: inherit;
-  }
-
   &--hide {
     opacity: 0;
     visibility: hidden;
@@ -24,6 +20,7 @@
     display: block;
     top: auto;
     left: auto;
+    background: inherit;
 
     &--hide {
       display: none;
@@ -34,21 +31,13 @@
     padding: 0.5rem 0;
   }
 
-  &__items {
-    list-style: none;
-  }
-
-  &__item {
-    display: flex;
-  }
-
   &__link:link,
   &__link:visited {
     text-decoration: none;
     color: var(--white-color);
     font-family: 'Open Sans', Helvetica, Arial, sans-serif;
     font-size: 1.2rem;
-    font-weight: 400;
+    // font-weight: 400;
     line-height: 1.7rem;
     white-space: nowrap;
     padding: 0.9rem 2rem;

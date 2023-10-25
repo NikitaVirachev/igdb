@@ -7,12 +7,16 @@
 
 @import './layout/aside';
 @import './layout/content';
+@import './layout/dropdown-menu';
 @import './layout/header';
+@import './layout/navbar';
 @import './layout/wrapper';
 
-@import './components/dropdown-menu';
+@import './components/burger';
 @import './components/input';
-@import './components/navbar';
+@import './components/login';
+@import './components/logo';
+@import './components/menu-list';
 @import './components/pad';
 @import './components/search';
 

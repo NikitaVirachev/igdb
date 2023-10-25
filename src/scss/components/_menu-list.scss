@@ -1,0 +1,31 @@
+.menu-list {
+  list-style: none;
+  display: flex;
+
+  &--column {
+    flex-direction: column;
+  }
+
+  &--row {
+    flex-direction: row;
+  }
+
+  &--navbar {
+    @include respondMax(laptopXS) {
+      flex-direction: column;
+      align-items: start;
+      gap: 1rem;
+    }
+  }
+
+  &__item {
+    display: flex;
+    position: relative;
+
+    &--navbar {
+      @include respondMax(laptopXS) {
+        flex-direction: column;
+      }
+    }
+  }
+}

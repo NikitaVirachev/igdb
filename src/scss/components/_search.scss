@@ -8,11 +8,11 @@
     border-radius: 0.4rem 0 0 0.4rem;
     width: 26rem;
 
-    @include respond(tab-land) {
+    @include respondMax(laptopL) {
       width: 17rem;
     }
 
-    @include respond(tab-port) {
+    @include respondMax(laptop) {
       width: 11rem;
     }
 

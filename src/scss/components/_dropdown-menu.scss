@@ -9,7 +9,7 @@
 
   background: var(--primary-color);
 
-  @include respond(phone) {
+  @include respondMax(tabletL) {
     background: inherit;
   }
 
@@ -19,7 +19,7 @@
     pointer-events: none;
   }
 
-  @include respond(phone) {
+  @include respondMax(tabletL) {
     position: relative;
     display: block;
     top: auto;
@@ -55,7 +55,7 @@
     width: 100%;
     vertical-align: middle;
 
-    @include respond(phone) {
+    @include respondMax(tabletL) {
       padding: 0.5rem 1.5rem 0.5rem 2.5rem;
     }
   }
@@ -78,7 +78,7 @@
     background: var(--white-color);
     margin: 0.3rem 0;
 
-    @include respond(phone) {
+    @include respondMax(tabletL) {
       background: inherit;
     }
   }

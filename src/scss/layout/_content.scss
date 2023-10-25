@@ -3,7 +3,13 @@
   margin: 0 auto;
   min-height: calc(100vh - 5rem);
   display: grid;
-  grid-template-columns: 1fr 28.55rem;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+
+  @include respondMin(laptopXS) {
+    grid-template-columns: 1fr 28.55rem;
+    grid-template-rows: 1fr;
+  }
 
   &__aside {
     padding: 0 1rem;

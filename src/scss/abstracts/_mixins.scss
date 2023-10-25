@@ -1,14 +1,14 @@
 // MEDIA QUERY MANAGER
 /*
-0 - 767px:      Phone
+0 - 767px:      tabletL
 767 - 930px:    Tablet portrait
 930 - 1280px:   Tablet landscape
 1280px + : is where our normal styles apply
 
 $breakpoint arguement choices:
-- phone
-- tab-port
-- tab-land
+- tabletL
+- laptop
+- laptopL
 - big-desktop
 
 ORDER: Base + typography > general layout + grid > page layout > components
@@ -17,20 +17,121 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 */
 
-@mixin respond($breakpoint) {
-  @if $breakpoint == phone {
+@mixin respondMax($breakpoint) {
+  @if $breakpoint == mobileS {
+    @media only screen and (max-width: 26.25em) {
+      @content;
+    } //max-width: 420px
+  }
+  @if $breakpoint == mobileM {
+    @media only screen and (max-width: 29.75em) {
+      @content;
+    } //max-width: 476px
+  }
+  @if $breakpoint == tabletS {
+    @media only screen and (max-width: 33.125em) {
+      @content;
+    } //max-width: 530px
+  }
+  @if $breakpoint == tabletM {
+    @media only screen and (max-width: 37.5em) {
+      @content;
+    } //max-width: 600px
+  }
+  @if $breakpoint == tabletL {
     @media only screen and (max-width: 47.9375em) {
       @content;
-    } //767px
+    } //max-width: 767px
   }
-  @if $breakpoint == tab-port {
+  @if $breakpoint == laptopS {
+    @media only screen and (max-width: 56em) and (max-height: 26.5625em) and (orientation: landscape) {
+      @content;
+    } //max-width: 930px, max-height: 425px
+  }
+  @if $breakpoint == laptop {
     @media only screen and (max-width: 58.125em) {
       @content;
-    } //930px
+    } //max-width: 930px
   }
-  @if $breakpoint == tab-land {
+  @if $breakpoint == laptopL {
     @media only screen and (max-width: 80em) {
       @content;
-    } //1280
+    } //max-width: 1280px
+  }
+}
+
+@mixin respondMinAndMax($breakpoint) {
+  @if $breakpoint == mobileS {
+    @media only screen and (max-width: 56em) and (min-width: 26.625em) {
+      @content;
+    } //426px < x < 896px
+  }
+  @if $breakpoint == mobileM {
+    @media (max-width: 61.9375em) and (min-width: 48em) {
+      @content;
+    } //991px < x < 768px
+  }
+  @if $breakpoint == laptopS {
+    @media only screen and (max-width: 63.9375em) and (min-width: 56.0625em) {
+      @content;
+    } //897px < x < 1023px
+  }
+  @if $breakpoint == laptopM {
+    @media (max-width: 74.9375em) and (min-width: 62em) {
+      @content;
+    } //992px < x < 1199px
+  }
+}
+
+@mixin respondMin($breakpoint) {
+  @if $breakpoint == mobileM {
+    @media only screen and (min-width: 25em) {
+      @content;
+    } //min-width: 400px
+  }
+  @if $breakpoint == mobileL {
+    @media only screen and (min-width: 26.25em) {
+      @content;
+    } //min-width: 420px
+  }
+  @if $breakpoint == tablet {
+    @media only screen and (min-width: 34.375em) {
+      @content;
+    } //min-width: 550px
+  }
+  @if $breakpoint == tabletM {
+    @media only screen and (min-width: 48.0625em) {
+      @content;
+    } //min-width: 769px
+  }
+  @if $breakpoint == laptopXS {
+    @media only screen and (min-width: 55.625em) {
+      @content;
+    } //min-width: 890px
+  }
+  @if $breakpoint == laptopS {
+    @media only screen and (min-width: 62em) {
+      @content;
+    } //min-width: 992px
+  }
+  @if $breakpoint == laptopM {
+    @media only screen and (min-width: 64.0625em) {
+      @content;
+    } //min-width: 1025px
+  }
+  @if $breakpoint == laptopXM {
+    @media only screen and (min-width: 75em) {
+      @content;
+    } //min-width: 1200px
+  }
+  @if $breakpoint == laptopL {
+    @media only screen and (min-width: 80em) {
+      @content;
+    } //min-width: 1280px
+  }
+  @if $breakpoint == laptopXL {
+    @media only screen and (min-width: 85.4375em) {
+      @content;
+    } //min-width: 1367px
   }
 }

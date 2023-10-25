@@ -5,7 +5,7 @@
   align-items: center;
   height: 100%;
 
-  @include respond(phone) {
+  @include respondMax(tabletL) {
     margin-top: 0;
     transition: all 1s;
     padding: 1rem;
@@ -21,7 +21,7 @@
 
     display: flex;
 
-    @include respond(phone) {
+    @include respondMax(tabletL) {
       flex-direction: column;
       align-items: start;
       gap: 1rem;
@@ -32,7 +32,7 @@
     display: flex;
     position: relative;
 
-    @include respond(phone) {
+    @include respondMax(tabletL) {
       flex-direction: column;
     }
   }
@@ -48,7 +48,7 @@
     align-items: center;
     padding: 0 1.5rem;
 
-    @include respond(phone) {
+    @include respondMax(tabletL) {
       padding: 1rem 1.5rem;
       height: 4rem;
     }
@@ -134,7 +134,7 @@
   }
 
   &__container {
-    @include respond(phone) {
+    @include respondMax(tabletL) {
       grid-column: 1 / -1;
       grid-row: 3;
       border-top: 1px solid var(--dark-grey-color-2);
@@ -144,7 +144,7 @@
   }
 
   &__search {
-    @include respond(phone) {
+    @include respondMax(tabletL) {
       align-self: start;
     }
   }

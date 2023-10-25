@@ -9,7 +9,7 @@
 
   background: var(--primary-color);
 
-  @include respondMax(tabletL) {
+  @include respondMax(laptopXS) {
     background: inherit;
   }
 
@@ -19,7 +19,7 @@
     pointer-events: none;
   }
 
-  @include respondMax(tabletL) {
+  @include respondMax(laptopXS) {
     position: relative;
     display: block;
     top: auto;
@@ -55,7 +55,7 @@
     width: 100%;
     vertical-align: middle;
 
-    @include respondMax(tabletL) {
+    @include respondMax(laptopXS) {
       padding: 0.5rem 1.5rem 0.5rem 2.5rem;
     }
   }
@@ -78,7 +78,7 @@
     background: var(--white-color);
     margin: 0.3rem 0;
 
-    @include respondMax(tabletL) {
+    @include respondMax(laptopXS) {
       background: inherit;
     }
   }

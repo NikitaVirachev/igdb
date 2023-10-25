@@ -8,18 +8,22 @@
   display: grid;
   grid-template-columns: auto 1fr auto;
   grid-template-rows: 5rem;
-  column-gap: 2rem;
+  // column-gap: 2rem;
 
-  @include respondMax(tabletL) {
+  @include respondMax(laptopXS) {
     grid-template-columns: auto 1fr;
     grid-template-rows: 5rem auto;
   }
 
   &__logo {
-    background: center/cover url('../img/logo-72x72.png');
-    height: 5rem;
-    width: 5rem;
-    margin-left: 1rem;
+    padding: 0 2rem 0 1rem;
+    display: block;
+
+    div {
+      height: 5rem;
+      width: 5rem;
+      background: center/cover url('../img/logo-72x72.png');
+    }
   }
 
   &__login:link,
@@ -36,7 +40,7 @@
     text-decoration: none;
     text-transform: uppercase;
 
-    @include respondMax(laptop) {
+    @include respondMax(laptopXS) {
       margin: 0.75rem 0;
     }
   }
@@ -62,7 +66,7 @@
     display: none;
     justify-self: end;
 
-    @include respondMax(tabletL) {
+    @include respondMax(laptopXS) {
       display: block;
     }
   }

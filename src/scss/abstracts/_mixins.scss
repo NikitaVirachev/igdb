@@ -43,6 +43,11 @@ ORDER: Base + typography > general layout + grid > page layout > components
       @content;
     } //max-width: 767px
   }
+  @if $breakpoint == laptopXS {
+    @media only screen and (max-width: 54em) {
+      @content;
+    } //max-width: 864px
+  }
   @if $breakpoint == laptopS {
     @media only screen and (max-width: 56em) and (max-height: 26.5625em) and (orientation: landscape) {
       @content;

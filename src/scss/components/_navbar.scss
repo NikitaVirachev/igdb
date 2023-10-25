@@ -5,7 +5,7 @@
   align-items: center;
   height: 100%;
 
-  @include respondMax(tabletL) {
+  @include respondMax(laptopXS) {
     margin-top: 0;
     transition: all 1s;
     padding: 1rem;
@@ -21,7 +21,7 @@
 
     display: flex;
 
-    @include respondMax(tabletL) {
+    @include respondMax(laptopXS) {
       flex-direction: column;
       align-items: start;
       gap: 1rem;
@@ -32,7 +32,7 @@
     display: flex;
     position: relative;
 
-    @include respondMax(tabletL) {
+    @include respondMax(laptopXS) {
       flex-direction: column;
     }
   }
@@ -48,7 +48,7 @@
     align-items: center;
     padding: 0 1.5rem;
 
-    @include respondMax(tabletL) {
+    @include respondMax(laptopXS) {
       padding: 1rem 1.5rem;
       height: 4rem;
     }
@@ -134,7 +134,7 @@
   }
 
   &__container {
-    @include respondMax(tabletL) {
+    @include respondMax(laptopXS) {
       grid-column: 1 / -1;
       grid-row: 3;
       border-top: 1px solid var(--dark-grey-color-2);
@@ -144,7 +144,7 @@
   }
 
   &__search {
-    @include respondMax(tabletL) {
+    @include respondMax(laptopXS) {
       align-self: start;
     }
   }

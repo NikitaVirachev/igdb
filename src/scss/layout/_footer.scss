@@ -23,4 +23,30 @@
       text-align: start;
     }
   }
+
+  &__mobile-btns,
+  &__separator {
+    display: flex;
+    justify-content: space-between;
+
+    @include respondMin(laptopS) {
+      display: none;
+    }
+  }
+
+  &__mobile-btn:link,
+  &__mobile-btn:visited {
+    font-weight: 600;
+    padding: 1.3rem 4rem;
+    font-size: 1.7rem;
+    line-height: 1.3333333;
+    text-decoration: none;
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    color: var(--primary-color);
+  }
+
+  &__mobile-btn:hover,
+  &__mobile-btn:active {
+    color: var(--dark-grey-color);
+  }
 }

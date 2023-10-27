@@ -3,6 +3,7 @@ import view from './views/view.js';
 import navbarView from './views/menu/navbarView.js';
 import dropdownMenuView from './views/menu/dropdownMenuView.js';
 import asideNavView from './views/menu/asideNavView.js';
+import footerView from './views/menu/footerView.js';
 
 const controlSubmitForm = function (e) {
   e.preventDefault();
@@ -51,6 +52,13 @@ const controlAsideNavClick = function (e) {
   asideNavView.toggleNavbarLink(link);
 };
 
+const controlFooterBtnClick = function (e) {
+  e.preventDefault();
+  const link = e.target.closest('#back-to-top');
+  if (!link) return;
+  footerView.scrollToTop();
+};
+
 export const init = function () {
   view.addHandlSubmitForm(controlSubmitForm);
   navbarView.addHandleMenuClick(controlNavbarClick);
@@ -58,4 +66,5 @@ export const init = function () {
   window.addEventListener('click', controlMenuClick);
   navbarView.addHandleBurgerBtnClick(controlNavbarBurgerBtnClick);
   asideNavView.addHandleMenuClick(controlAsideNavClick);
+  footerView.addHandleMenuClick(controlFooterBtnClick);
 };

@@ -32,7 +32,7 @@
           <nav id="navbar" class="navbar navbar--collapsed">
             <form id="search" class="navbar__search search" action="">
               <input
-                class="search__input input"
+                class="search__input form__input"
                 type="search"
                 placeholder="Search"
                 name="search"
@@ -423,6 +423,54 @@
             <li>Games</li>
           </ol>
           <h1 class="content__header">Best Games</h1>
+          <div class="mar-md-top mar-lg-bottom">
+            <form action="" method="" class="filter">
+              <div class="form__cell">
+                <label class="form__label" for="top-platform-filter">
+                  Platform:
+                </label>
+                <select
+                  name="top_platform_filter"
+                  id="top-platform-filter"
+                  class="form__input"
+                >
+                  <option value="all">All Platforms</option>
+                  <option value="linux">Linux</option>
+                  <option value="mac">Mac</option>
+                  <option value="win">PC (Microsoft Windows)</option>
+                  <option value="ps3">Play Station 3</option>
+                  <option value="ps4">Play Station 4</option>
+                  <option value="wiiu">Wii U</option>
+                  <option value="xbox360">Xbox 360</option>
+                  <option value="xboxone">Xbox One</option>
+                </select>
+              </div>
+              <div class="form__cell">
+                <label class="form__label" for="top_from_year">
+                  From Year:
+                </label>
+                <input
+                  id="top_from_year"
+                  type="text"
+                  placeholder="1900"
+                  value="1900"
+                  class="form__input"
+                />
+              </div>
+              <div class="form__cell">
+                <label class="form__label" for="top_to_year">To Year:</label>
+                <input
+                  id="top_to_year"
+                  type="text"
+                  placeholder="YYYY"
+                  value="2023"
+                  class="form__input"
+                />
+              </div>
+            </form>
+            <br />
+            <table></table>
+          </div>
         </section>
         <div>
           <aside class="aside">

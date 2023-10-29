@@ -6,4 +6,9 @@
   &--light-grey {
     background: var(--light-grey-color-1);
   }
+
+  &--main {
+    display: grid;
+    grid-template-rows: 1fr auto;
+  }
 }

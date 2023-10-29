@@ -412,254 +412,258 @@
       </header>
     </div>
 
-    <div class="wrapper--light-grey wrapper--main">
-      <main class="main">
-        <section class="content">
-          <ol class="breadcrumb menu-list menu-list--row">
-            <li>
-              <a class="breadcrumb__link" target="_blank" href="/">Home</a>
-            </li>
-            <li>Top 100</li>
-            <li>Games</li>
-          </ol>
-          <h1 class="content__header">Best Games</h1>
-          <div class="mar-md-top mar-lg-bottom">
-            <form action="" method="" class="filter">
-              <div class="form__cell">
-                <label class="form__label" for="top-platform-filter">
-                  Platform:
-                </label>
-                <select
-                  name="top_platform_filter"
-                  id="top-platform-filter"
-                  class="form__input"
-                >
-                  <option value="all">All Platforms</option>
-                  <option value="linux">Linux</option>
-                  <option value="mac">Mac</option>
-                  <option value="win">PC (Microsoft Windows)</option>
-                  <option value="ps3">Play Station 3</option>
-                  <option value="ps4">Play Station 4</option>
-                  <option value="wiiu">Wii U</option>
-                  <option value="xbox360">Xbox 360</option>
-                  <option value="xboxone">Xbox One</option>
-                </select>
-              </div>
-              <div class="form__cell">
-                <label class="form__label" for="top_from_year">
-                  From Year:
-                </label>
-                <input
-                  id="top_from_year"
-                  type="text"
-                  placeholder="1900"
-                  value="1900"
-                  class="form__input"
-                />
-              </div>
-              <div class="form__cell">
-                <label class="form__label" for="top_to_year">To Year:</label>
-                <input
-                  id="top_to_year"
-                  type="text"
-                  placeholder="YYYY"
-                  value="2023"
-                  class="form__input"
-                />
-              </div>
-            </form>
-          </div>
+    <div class="wrapper--light-grey">
+      <div class="main-container">
+        <main>
+          <section class="content">
+            <ol class="breadcrumb menu-list menu-list--row">
+              <li>
+                <a class="breadcrumb__link" target="_blank" href="/">Home</a>
+              </li>
+              <li>Top 100</li>
+              <li>Games</li>
+            </ol>
+            <h1 class="content__header">Best Games</h1>
+            <div class="mar-lg-bottom">
+              <form action="" method="" class="filter">
+                <div class="form__cell">
+                  <label class="form__label" for="top-platform-filter">
+                    Platform:
+                  </label>
+                  <select
+                    name="top_platform_filter"
+                    id="top-platform-filter"
+                    class="form__input"
+                  >
+                    <option value="all">All Platforms</option>
+                    <option value="linux">Linux</option>
+                    <option value="mac">Mac</option>
+                    <option value="win">PC (Microsoft Windows)</option>
+                    <option value="ps3">Play Station 3</option>
+                    <option value="ps4">Play Station 4</option>
+                    <option value="wiiu">Wii U</option>
+                    <option value="xbox360">Xbox 360</option>
+                    <option value="xboxone">Xbox One</option>
+                  </select>
+                </div>
+                <div class="form__cell">
+                  <label class="form__label" for="top_from_year">
+                    From Year:
+                  </label>
+                  <input
+                    id="top_from_year"
+                    type="text"
+                    placeholder="1900"
+                    value="1900"
+                    class="form__input"
+                  />
+                </div>
+                <div class="form__cell">
+                  <label class="form__label" for="top_to_year">To Year:</label>
+                  <input
+                    id="top_to_year"
+                    type="text"
+                    placeholder="YYYY"
+                    value="2023"
+                    class="form__input"
+                  />
+                </div>
+              </form>
+            </div>
 
-          <br />
-
-          <table class="table content__table">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th></th>
-                <th>Name</th>
-                <th>Score</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><h4 class="table__number text--muted">1</h4></td>
-                <td>
-                  <a href="/games/baldurs-gate-3">
-                    <div class="table__game-cover">
-                      <img
-                        src="/src/img/games/Buldurs Gate 3.png"
-                        alt="Cover of Buldurs Gate 3"
-                      />
-                    </div>
-                  </a>
-                </td>
-                <td>
-                  <div class="table__game-name">
-                    <a href="/games/baldurs-gate-3"> Baldur's Gate 3 </a>
-                    <span class="mg-sm-left text--muted">(2020)</span>
-                  </div>
-                  <!-- <br /> -->
-                  <div class="table__rating">
-                    <span class="text--muted">Your rating:</span>
-                    <a>
-                      <div class="table__stars">
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="star"></div>
+            <table class="table content__table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th></th>
+                  <th>Name</th>
+                  <th>Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><h4 class="table__number text--muted">1</h4></td>
+                  <td>
+                    <a href="/games/baldurs-gate-3">
+                      <div class="table__game-cover">
+                        <img
+                          src="/src/img/games/Buldurs Gate 3.png"
+                          alt="Cover of Buldurs Gate 3"
+                        />
                       </div>
                     </a>
-                  </div>
-                </td>
-                <td>
-                  <h4 class="table__score">
-                    <span class="text--purple">97</span
-                    ><span class="text--muted"> / 100</span>
-                  </h4>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-        <div>
-          <aside class="aside">
-            <h2 class="aside__header">Other Top 100s</h2>
-            <nav id="aside-nav" class="aside__nav">
-              <ul class="menu-list menu-list--column">
-                <li>
-                  <a href="#" class="aside__link aside__link--active">Games</a>
-                </li>
-                <li>
-                  <a href="#" class="aside__link">Companies</a>
-                </li>
-                <li>
-                  <a href="#" class="aside__link">Contributors</a>
-                </li>
-                <li>
-                  <a href="#" class="aside__link">Most Anticipated</a>
-                </li>
-              </ul>
-            </nav>
-            <br />
-            <div class="aside__pad pad">
-              <h5 class="pad__header">How are the top lists calculated?</h5>
-              <p>
-                We use a <strong>weighted rating</strong>, meaning we calculate
-                a new value not only based on the average rating but the number
-                of votes too. This gives us a more accurate "top" list.
-              </p>
-            </div>
-            <hr />
-            <br />
-          </aside>
-        </div>
-      </main>
+                  </td>
+                  <td>
+                    <div class="table__game-name">
+                      <a href="/games/baldurs-gate-3"> Baldur's Gate 3 </a>
+                      <span class="mg-sm-left text--muted">(2020)</span>
+                    </div>
+                    <!-- <br /> -->
+                    <div class="table__rating">
+                      <span class="text--muted">Your rating:</span>
+                      <a>
+                        <div class="table__stars">
+                          <div class="star"></div>
+                          <div class="star"></div>
+                          <div class="star"></div>
+                          <div class="star"></div>
+                          <div class="star"></div>
+                          <div class="star"></div>
+                          <div class="star"></div>
+                          <div class="star"></div>
+                          <div class="star"></div>
+                          <div class="star"></div>
+                        </div>
+                      </a>
+                    </div>
+                  </td>
+                  <td>
+                    <h4 class="table__score">
+                      <span class="text--purple">97</span
+                      ><span class="text--muted"> / 100</span>
+                    </h4>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </main>
 
-      <footer id="footer" class="footer main">
-        <div class="footer__container">
-          <div class="footer__mobile-btns">
-            <a id="back-to-top" class="footer__mobile-btn" href="#header">
-              Back to Top
-            </a>
-            <a class="footer__mobile-btn" href="#">Request mobile site</a>
+        <aside class="aside">
+          <h2 class="aside__header">Other Top 100s</h2>
+          <nav id="aside-nav" class="aside__nav">
+            <ul class="menu-list menu-list--column">
+              <li>
+                <a href="#" class="aside__link aside__link--active">Games</a>
+              </li>
+              <li>
+                <a href="#" class="aside__link">Companies</a>
+              </li>
+              <li>
+                <a href="#" class="aside__link">Contributors</a>
+              </li>
+              <li>
+                <a href="#" class="aside__link">Most Anticipated</a>
+              </li>
+            </ul>
+          </nav>
+          <br />
+          <div class="aside__pad pad">
+            <h5 class="pad__header">How are the top lists calculated?</h5>
+            <p class="pad__description">
+              We use a <strong>weighted rating</strong>, meaning we calculate a
+              new value not only based on the average rating but the number of
+              votes too. This gives us a more accurate "top" list.
+            </p>
           </div>
-          <br class="footer__separator" />
-          <div class="footer__links">
-            <a
-              class="footer__link"
-              href="https://www.twitch.tv/p/legal/privacy-policy/"
-              target="_blank"
-              rel="nofollow"
-            >
-              Privacy Notice
-            </a>
-            <span> - </span>
-            <a
-              class="footer__link"
-              href="https://www.twitch.tv/p/legal/terms-of-service/"
-              target="_blank"
-              rel="nofollow"
-            >
-              Terms
-            </a>
-            <span> - </span>
-            <a class="footer__link" href="/content-policy"> Content Policy </a>
-            <span> - </span>
-            <a
-              class="footer__link"
-              href="https://www.twitch.tv/p/legal/community-guidelines/"
-              target="_blank"
-              rel="nofollow"
-            >
-              Community Guidelines
-            </a>
-            <span> - </span>
-            <a
-              class="footer__link"
-              href="https://www.twitch.tv/p/legal/developer-agreement/"
-              target="_blank"
-              rel="nofollow"
-            >
-              Developer Terms
-            </a>
-            <span> - </span>
-            <a
-              class="footer__link"
-              href="https://www.twitch.tv/p/en/legal/dmca-guidelines/"
-              target="_blank"
-            >
-              DMCA guidelines
-            </a>
-            <span> - </span>
-            <a class="footer__link" href="/api" target="_self"> API </a>
-            <span> - </span>
-            <a
-              class="footer__link"
-              href="https://github.com/twitchtv/igdb-contribution-guidelines/wiki"
-              target="_blank"
-            >
-              Contribution Guidelines
-            </a>
-            <span> - </span>
-            <a
-              class="footer__link"
-              href="https://discord.gg/WvBNFRu"
-              target="_blank"
-            >
-              Discord
-            </a>
-            <span> - </span>
-            <a
-              class="footer__link"
-              href="https://twitter.com/IGDBcom"
-              target="_blank"
-            >
-              Twitter
-            </a>
-            <span> - </span>
-            <a
-              class="footer__link"
-              href="https://twitch.uservoice.com/forums/929953-igdb"
-              target="_blank"
-            >
-              UserVoice
-            </a>
+          <hr />
+          <br />
+        </aside>
+
+        <footer id="footer" class="footer">
+          <div class="footer__container">
+            <div class="footer__mobile-btns">
+              <a id="back-to-top" class="footer__mobile-btn" href="#header">
+                Back to Top
+              </a>
+              <a class="footer__mobile-btn" href="#">Request mobile site</a>
+            </div>
+            <br class="footer__separator" />
+            <div class="footer__links">
+              <a
+                class="footer__link"
+                href="https://www.twitch.tv/p/legal/privacy-policy/"
+                target="_blank"
+                rel="nofollow"
+              >
+                Privacy Notice
+              </a>
+              <span> - </span>
+              <a
+                class="footer__link"
+                href="https://www.twitch.tv/p/legal/terms-of-service/"
+                target="_blank"
+                rel="nofollow"
+              >
+                Terms
+              </a>
+              <span> - </span>
+              <a class="footer__link" href="/content-policy">
+                Content Policy
+              </a>
+              <span> - </span>
+              <a
+                class="footer__link"
+                href="https://www.twitch.tv/p/legal/community-guidelines/"
+                target="_blank"
+                rel="nofollow"
+              >
+                Community Guidelines
+              </a>
+              <span> - </span>
+              <a
+                class="footer__link"
+                href="https://www.twitch.tv/p/legal/developer-agreement/"
+                target="_blank"
+                rel="nofollow"
+              >
+                Developer Terms
+              </a>
+              <span> - </span>
+              <a
+                class="footer__link"
+                href="https://www.twitch.tv/p/en/legal/dmca-guidelines/"
+                target="_blank"
+              >
+                DMCA guidelines
+              </a>
+              <span> - </span>
+              <a class="footer__link" href="/api" target="_self"> API </a>
+              <span> - </span>
+              <a
+                class="footer__link"
+                href="https://github.com/twitchtv/igdb-contribution-guidelines/wiki"
+                target="_blank"
+              >
+                Contribution Guidelines
+              </a>
+              <span> - </span>
+              <a
+                class="footer__link"
+                href="https://discord.gg/WvBNFRu"
+                target="_blank"
+              >
+                Discord
+              </a>
+              <span> - </span>
+              <a
+                class="footer__link"
+                href="https://twitter.com/IGDBcom"
+                target="_blank"
+              >
+                Twitter
+              </a>
+              <span> - </span>
+              <a
+                class="footer__link"
+                href="https://twitch.uservoice.com/forums/929953-igdb"
+                target="_blank"
+              >
+                UserVoice
+              </a>
+            </div>
+            <div class="footer__made">
+              <span>IGDB is operated by </span>
+              <a
+                class="footer__link"
+                href="https://www.twitch.tv"
+                target="_blank"
+                >Twitch</a
+              >
+            </div>
           </div>
-          <div class="footer__made">
-            <span>IGDB is operated by </span>
-            <a class="footer__link" href="https://www.twitch.tv" target="_blank"
-              >Twitch</a
-            >
-          </div>
-        </div>
-      </footer>
+        </footer>
+      </div>
     </div>
   </body>
 </html>

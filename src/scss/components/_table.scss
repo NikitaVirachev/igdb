@@ -17,6 +17,11 @@
     &:nth-child(2) {
       width: 1%;
       white-space: nowrap;
+      display: none;
+
+      @include respondMin(laptopS) {
+        display: table-cell;
+      }
     }
 
     &:nth-child(3) {
@@ -84,7 +89,7 @@
   }
 
   &__rating {
-    margin-top: 0.5rem;
+    margin: 0.5rem 0;
     display: flex;
 
     span {

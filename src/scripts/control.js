@@ -4,6 +4,7 @@ import navbarView from './views/menu/navbarView.js';
 import dropdownMenuView from './views/menu/dropdownMenuView.js';
 import asideNavView from './views/menu/asideNavView.js';
 import footerView from './views/menu/footerView.js';
+import loginView from './views/menu/loginView.js';
 
 const controlSubmitForm = function (e) {
   e.preventDefault();
@@ -59,6 +60,17 @@ const controlFooterBtnClick = function (e) {
   footerView.scrollToTop();
 };
 
+const controlLoginBtnClick = async function (e) {
+  try {
+    e.preventDefault();
+    const link = e.target.closest('#login');
+    if (!link) return;
+    await model.authentication();
+  } catch (error) {
+    console.error('💥', error);
+  }
+};
+
 export const init = function () {
   view.addHandlSubmitForm(controlSubmitForm);
   navbarView.addHandleMenuClick(controlNavbarClick);
@@ -67,4 +79,5 @@ export const init = function () {
   navbarView.addHandleBurgerBtnClick(controlNavbarBurgerBtnClick);
   asideNavView.addHandleMenuClick(controlAsideNavClick);
   footerView.addHandleMenuClick(controlFooterBtnClick);
+  loginView.addHandleMenuClick(controlLoginBtnClick);
 };

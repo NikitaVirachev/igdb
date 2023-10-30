@@ -60,24 +60,24 @@ const controlFooterBtnClick = function (e) {
   footerView.scrollToTop();
 };
 
-const controlLoginBtnClick = async function (e) {
-  try {
-    e.preventDefault();
-    const link = e.target.closest('#login');
-    if (!link) return;
-    await model.authentication();
-  } catch (error) {
-    console.error('💥', error);
-  }
+const controlLoginBtnClick = function (e) {
+  e.preventDefault();
+  const link = e.target.closest('#login');
+  if (!link) return;
 };
 
-export const init = function () {
-  view.addHandlSubmitForm(controlSubmitForm);
-  navbarView.addHandleMenuClick(controlNavbarClick);
-  dropdownMenuView.addHandleMenuClick(controlDropdownMenuClick);
-  window.addEventListener('click', controlMenuClick);
-  navbarView.addHandleBurgerBtnClick(controlNavbarBurgerBtnClick);
-  asideNavView.addHandleMenuClick(controlAsideNavClick);
-  footerView.addHandleMenuClick(controlFooterBtnClick);
-  loginView.addHandleMenuClick(controlLoginBtnClick);
+export const init = async function () {
+  try {
+    await model.authentication();
+    view.addHandlSubmitForm(controlSubmitForm);
+    navbarView.addHandleMenuClick(controlNavbarClick);
+    dropdownMenuView.addHandleMenuClick(controlDropdownMenuClick);
+    window.addEventListener('click', controlMenuClick);
+    navbarView.addHandleBurgerBtnClick(controlNavbarBurgerBtnClick);
+    asideNavView.addHandleMenuClick(controlAsideNavClick);
+    footerView.addHandleMenuClick(controlFooterBtnClick);
+    loginView.addHandleMenuClick(controlLoginBtnClick);
+  } catch (eroor) {
+    console.error('💥', error);
+  }
 };

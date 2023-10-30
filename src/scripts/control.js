@@ -66,18 +66,14 @@ const controlLoginBtnClick = function (e) {
   if (!link) return;
 };
 
-export const init = async function () {
-  try {
-    await model.authentication();
-    view.addHandlSubmitForm(controlSubmitForm);
-    navbarView.addHandleMenuClick(controlNavbarClick);
-    dropdownMenuView.addHandleMenuClick(controlDropdownMenuClick);
-    window.addEventListener('click', controlMenuClick);
-    navbarView.addHandleBurgerBtnClick(controlNavbarBurgerBtnClick);
-    asideNavView.addHandleMenuClick(controlAsideNavClick);
-    footerView.addHandleMenuClick(controlFooterBtnClick);
-    loginView.addHandleMenuClick(controlLoginBtnClick);
-  } catch (eroor) {
-    console.error('💥', error);
-  }
+export const init = function () {
+  model.getAccessToken();
+  view.addHandlSubmitForm(controlSubmitForm);
+  navbarView.addHandleMenuClick(controlNavbarClick);
+  dropdownMenuView.addHandleMenuClick(controlDropdownMenuClick);
+  window.addEventListener('click', controlMenuClick);
+  navbarView.addHandleBurgerBtnClick(controlNavbarBurgerBtnClick);
+  asideNavView.addHandleMenuClick(controlAsideNavClick);
+  footerView.addHandleMenuClick(controlFooterBtnClick);
+  loginView.addHandleMenuClick(controlLoginBtnClick);
 };

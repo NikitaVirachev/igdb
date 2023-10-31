@@ -1,9 +1,3 @@
-class View {
-  #form = document.querySelector('#search');
+class View {}
 
-  addHandlSubmitForm(handler) {
-    this.#form.addEventListener('click', handler);
-  }
-}
-
-export default new View();
+export default View;

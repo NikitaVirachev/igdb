@@ -1,12 +1,13 @@
 import * as model from './model.js';
-import view from './views/view.js';
+import searchFormView from './views/forms/searchFormView.js';
 import navbarView from './views/menu/navbarView.js';
 import dropdownMenuView from './views/menu/dropdownMenuView.js';
 import asideNavView from './views/menu/asideNavView.js';
 import footerView from './views/menu/footerView.js';
 import loginView from './views/menu/loginView.js';
+import tableView from './views/tableView.js';
 
-const controlSubmitForm = function (e) {
+const controlSubmitSearchForm = function (e) {
   e.preventDefault();
 };
 
@@ -66,9 +67,8 @@ const controlLoginBtnClick = function (e) {
   if (!link) return;
 };
 
-export const init = function () {
-  model.getAccessToken();
-  view.addHandlSubmitForm(controlSubmitForm);
+export const init = async function () {
+  searchFormView.addHandlSubmitForm(controlSubmitSearchForm);
   navbarView.addHandleMenuClick(controlNavbarClick);
   dropdownMenuView.addHandleMenuClick(controlDropdownMenuClick);
   window.addEventListener('click', controlMenuClick);
@@ -76,4 +76,11 @@ export const init = function () {
   asideNavView.addHandleMenuClick(controlAsideNavClick);
   footerView.addHandleMenuClick(controlFooterBtnClick);
   loginView.addHandleMenuClick(controlLoginBtnClick);
+  try {
+    await model.getAccessToken();
+    const games = await model.getTopGames();
+    // tableView.createTable(games);
+  } catch (error) {
+    console.error(`${error} 💥`);
+  }
 };

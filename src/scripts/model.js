@@ -2,7 +2,7 @@ import HttpError from './HttpError';
 
 export let state = {
   api: {
-    baseURL: 'http://localhost:8000/api.igdb.com/v4',
+    baseURL: 'http://localhost:8000/https://api.igdb.com/v4',
     smallCoverURL: 'https://images.igdb.com/igdb/image/upload/t_cover_small',
     clientId: '6gcjmymrpono4un901t7k8r4nz3hkh',
     clientSecret: 'h0s7kr8rahe6q33vcbv4e2fuh36hdp',
@@ -54,7 +54,7 @@ export const getAccessToken = async function () {
     state.api.access_token = data.access_token;
     setHeaders();
   } catch (error) {
-    throw Error;
+    throw error;
   }
 };
 
@@ -71,7 +71,7 @@ const getImage = async function (url) {
 
 export const getGameCover = async function (coverID) {
   try {
-    const raw = `fields image_id;where id = ${coverID}`;
+    const raw = `fields image_id;where id = ${coverID};`;
     const requestOptions = {
       method: 'POST',
       headers: state.api.headers,
@@ -90,7 +90,7 @@ export const getGameCover = async function (coverID) {
     if (error instanceof HttpError && error.status === 401) {
       // Проверка на HttpError и статус 401
       await getAccessToken(); // Ожидание получения нового токена
-      return getTopGames(); // Рекурсивный вызов после обновления токена
+      return getGameCover(coverID); // Рекурсивный вызов после обновления токена
     } else {
       throw error; // Переброс остальных ошибок
     }
@@ -100,16 +100,13 @@ export const getGameCover = async function (coverID) {
 export const getTopGames = async function () {
   try {
     const raw =
-      'search=' +
-      '&fields=id,name,url,cover.url,release_dates.date,total_rating' +
-      '&filter[total_rating][gt]=0&filter[total_rating_count][gt]=100' +
-      '&order=total_rating:desc' +
-      '&limit=5';
+      'fields id, name, url, cover, release_dates, total_rating;\nwhere total_rating > 0 & total_rating_count > 100;\nlimit 5;\nsort total_rating desc;';
     const requestOptions = {
-      method: 'GET',
+      method: 'POST',
       headers: state.api.headers,
+      body: raw,
     };
-    const url = `${state.api.baseURL}/games/?${raw}`;
+    const url = `${state.api.baseURL}/games`;
 
     const games = await getJSON(
       url,
@@ -117,19 +114,11 @@ export const getTopGames = async function () {
       'Failed request to receive top of games'
     );
 
-    games.map(async (game, index) => {
-      const coverObj = await getGameCover(game.cover.id);
-      const imageURL = `${state.api.smallCoverURL}/${coverObj.image_id}.jpg`;
-      const cover = await getImage(imageURL);
-      return {
-        name: game.name,
-        cover: cover,
-        score: game.total_rating,
-        number: index,
-      };
-    });
+    const coverIDArr = await Promise.all(
+      games.map((game) => getGameCover(game.cover))
+    );
 
-    return games;
+    return coverIDArr;
   } catch (error) {
     console.error(`${error} 💥`); // Исправлено для корректного вывода ошибки
     if (error instanceof HttpError && error.status === 401) {

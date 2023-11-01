@@ -2,7 +2,7 @@ import HttpError from './HttpError';
 
 export let state = {
   api: {
-    baseURL: 'https://api.igdb.com/v4',
+    baseURL: 'http://localhost:8000/api.igdb.com/v4',
     clientId: '6gcjmymrpono4un901t7k8r4nz3hkh',
     clientSecret: 'h0s7kr8rahe6q33vcbv4e2fuh36hdp',
     access_token: null,

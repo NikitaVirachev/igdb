@@ -63,7 +63,7 @@ const getImage = async function (url) {
     const response = await fetch(url);
     if (!response.ok)
       throw new HttpError(errorMsg, response.ok, response.status);
-    return response;
+    return response.blob();
   } catch (error) {
     throw error;
   }
@@ -115,7 +115,14 @@ export const getTopGames = async function () {
     );
 
     const coverIDArr = await Promise.all(
-      games.map((game) => getGameCover(game.cover))
+      games.map(async (game) => {
+        const [cover] = await getGameCover(game.cover);
+        const hash = cover.image_id;
+        const url = `${state.api.smallCoverURL}/${hash}.jpg`;
+        const imageBlob = await getImage(url);
+        const objectURL = URL.createObjectURL(imageBlob);
+        return cover;
+      })
     );
 
     return coverIDArr;

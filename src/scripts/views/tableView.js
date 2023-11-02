@@ -1,7 +1,7 @@
 import View from './view';
 
 class TableView extends View {
-  _table = document.querySelector('table');
+  _table = document.querySelector('#table').querySelector('tbody');
 
   _generateGameMarkup(game) {
     return `
@@ -11,7 +11,7 @@ class TableView extends View {
           <a href="/games/baldurs-gate-3">
             <div class="table__game-cover">
               <img
-                src="/src/img/games/Buldurs Gate 3.png"
+                src=${game.imageURL}
                 alt="Cover of Buldurs Gate 3"
               />
             </div>
@@ -19,8 +19,8 @@ class TableView extends View {
         </td>
         <td>
           <div class="table__game-name">
-            <a href="/games/baldurs-gate-3">${game.name}</a>
-            <span class="mg-sm-left text--muted">(${game.releaseYear})</span>
+            <a href=${game.url}>${game.name}</a>
+            <span class="mg-sm-left text--muted">(${game.year})</span>
           </div>
           <div class="table__rating">
             <span class="text--muted">Your rating:</span>
@@ -50,7 +50,10 @@ class TableView extends View {
     `;
   }
 
+  _createGameRow(game) {}
+
   createTable(games) {
+    this._table.innerHTML = '';
     games.forEach((game) => {
       const gameMarkup = this._generateGameMarkup(game);
       this._table.insertAdjacentHTML('beforeend', gameMarkup);

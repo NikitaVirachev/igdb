@@ -100,7 +100,10 @@ export const getGameCover = async function (coverID) {
 export const getTopGames = async function () {
   try {
     const raw =
-      'fields id, name, url, cover, release_dates, total_rating;\nwhere total_rating > 0 & total_rating_count > 100;\nlimit 5;\nsort total_rating desc;';
+      'fields id, name, url, cover, first_release_date, total_rating;' +
+      'where (total_rating > 0 & total_rating_count > 100) & (aggregated_rating_count > 5) & category = (0, 8, 9);' +
+      'limit 10;' +
+      'sort total_rating desc;';
     const requestOptions = {
       method: 'POST',
       headers: state.api.headers,
@@ -114,18 +117,22 @@ export const getTopGames = async function () {
       'Failed request to receive top of games'
     );
 
-    const coverIDArr = await Promise.all(
-      games.map(async (game) => {
+    return await Promise.all(
+      games.map(async (game, index) => {
         const [cover] = await getGameCover(game.cover);
         const hash = cover.image_id;
         const url = `${state.api.smallCoverURL}/${hash}.jpg`;
         const imageBlob = await getImage(url);
-        const objectURL = URL.createObjectURL(imageBlob);
-        return cover;
+        const imageURL = URL.createObjectURL(imageBlob);
+        return {
+          ...game,
+          number: index + 1,
+          score: Math.floor(game.total_rating),
+          year: new Date(game.first_release_date * 1000).getFullYear(),
+          imageURL,
+        };
       })
     );
-
-    return coverIDArr;
   } catch (error) {
     console.error(`${error} 💥`); // Исправлено для корректного вывода ошибки
     if (error instanceof HttpError && error.status === 401) {

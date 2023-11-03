@@ -1,4 +1,5 @@
 import HttpError from './HttpError';
+import Queue from './Queue';
 
 export let state = {
   api: {
@@ -8,6 +9,7 @@ export let state = {
     clientSecret: 'h0s7kr8rahe6q33vcbv4e2fuh36hdp',
     access_token: null,
     headers: null,
+    rateLimit: 4,
   },
 };
 
@@ -97,12 +99,27 @@ export const getGameCover = async function (coverID) {
   }
 };
 
+const collectGameObject = async function (game, index) {
+  const [cover] = await getGameCover(game.cover);
+  const hash = cover.image_id;
+  const url = `${state.api.smallCoverURL}/${hash}.jpg`;
+  const imageBlob = await getImage(url);
+  const imageURL = URL.createObjectURL(imageBlob);
+  return {
+    ...game,
+    number: index + 1,
+    score: Math.floor(game.total_rating),
+    year: new Date(game.first_release_date * 1000).getFullYear(),
+    imageURL,
+  };
+};
+
 export const getTopGames = async function () {
   try {
     const raw =
       'fields id, name, url, cover, first_release_date, total_rating;' +
       'where (total_rating > 0 & total_rating_count > 100) & (aggregated_rating_count > 5) & category = (0, 8, 9);' +
-      'limit 10;' +
+      'limit 100;' +
       'sort total_rating desc;';
     const requestOptions = {
       method: 'POST',
@@ -116,23 +133,24 @@ export const getTopGames = async function () {
       requestOptions,
       'Failed request to receive top of games'
     );
+    const gamesQueue = new Queue();
+    games.forEach((game) => {
+      gamesQueue.enqueue(game);
+    });
 
-    return await Promise.all(
-      games.map(async (game, index) => {
-        const [cover] = await getGameCover(game.cover);
-        const hash = cover.image_id;
-        const url = `${state.api.smallCoverURL}/${hash}.jpg`;
-        const imageBlob = await getImage(url);
-        const imageURL = URL.createObjectURL(imageBlob);
-        return {
-          ...game,
-          number: index + 1,
-          score: Math.floor(game.total_rating),
-          year: new Date(game.first_release_date * 1000).getFullYear(),
-          imageURL,
-        };
-      })
-    );
+    const requestInInterval = async function (gamesQueue) {
+      let games = [];
+      while (games.length < state.api.rateLimit && !gamesQueue.isEmpty)
+        games.push(gamesQueue.dequeue());
+
+      games = await Promise.all(
+        games.map(async (game, index) => await collectGameObject(game, index))
+      );
+      console.log(games);
+      if (gamesQueue.length === 0) clearInterval(intervalId);
+    };
+
+    const intervalId = setInterval(requestInInterval, 1000, gamesQueue);
   } catch (error) {
     console.error(`${error} 💥`); // Исправлено для корректного вывода ошибки
     if (error instanceof HttpError && error.status === 401) {

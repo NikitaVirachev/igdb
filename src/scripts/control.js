@@ -79,8 +79,8 @@ export const init = async function () {
   try {
     await model.getAccessToken();
     await model.getTopGames();
-    // const games = await model.getTopGames();
-    // tableView.createTable(games);
+    const games = await model.getTopGames();
+    tableView.createTable(games);
   } catch (error) {
     console.error(`${error} 💥`);
   }

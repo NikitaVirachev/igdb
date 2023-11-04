@@ -71,7 +71,7 @@ const getImage = async function (url) {
   }
 };
 
-export const getGameCover = async function (coverID) {
+const getGameCover = async function (coverID) {
   try {
     const raw = `fields image_id;where id = ${coverID};`;
     const requestOptions = {
@@ -114,12 +114,33 @@ const collectGameObject = async function (game, index) {
   };
 };
 
+const waitUntil = async function (gamesQueue) {
+  let gameObjects = [];
+  const numberGames = gamesQueue.length;
+  return new Promise((resolve) => {
+    let intervalId = null;
+    intervalId = setInterval(async () => {
+      let games = [];
+      while (games.length < state.api.rateLimit && !gamesQueue.isEmpty)
+        games.push(gamesQueue.dequeue());
+      games = await Promise.all(
+        games.map(async (game, index) => await collectGameObject(game, index))
+      );
+      gameObjects = gameObjects.concat(games);
+      if (gameObjects.length === numberGames) {
+        resolve(gameObjects);
+        clearInterval(intervalId);
+      }
+    }, 1000);
+  });
+};
+
 export const getTopGames = async function () {
   try {
     const raw =
       'fields id, name, url, cover, first_release_date, total_rating;' +
       'where (total_rating > 0 & total_rating_count > 100) & (aggregated_rating_count > 5) & category = (0, 8, 9);' +
-      'limit 100;' +
+      'limit 10;' +
       'sort total_rating desc;';
     const requestOptions = {
       method: 'POST',
@@ -138,19 +159,7 @@ export const getTopGames = async function () {
       gamesQueue.enqueue(game);
     });
 
-    const requestInInterval = async function (gamesQueue) {
-      let games = [];
-      while (games.length < state.api.rateLimit && !gamesQueue.isEmpty)
-        games.push(gamesQueue.dequeue());
-
-      games = await Promise.all(
-        games.map(async (game, index) => await collectGameObject(game, index))
-      );
-      console.log(games);
-      if (gamesQueue.length === 0) clearInterval(intervalId);
-    };
-
-    const intervalId = setInterval(requestInInterval, 1000, gamesQueue);
+    return await waitUntil(gamesQueue);
   } catch (error) {
     console.error(`${error} 💥`); // Исправлено для корректного вывода ошибки
     if (error instanceof HttpError && error.status === 401) {

@@ -78,7 +78,6 @@ export const init = async function () {
   loginView.addHandleMenuClick(controlLoginBtnClick);
   try {
     await model.getAccessToken();
-    await model.getTopGames();
     const games = await model.getTopGames();
     tableView.createTable(games);
   } catch (error) {

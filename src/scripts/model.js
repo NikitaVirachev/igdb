@@ -99,7 +99,7 @@ const getGameCover = async function (coverID) {
   }
 };
 
-const collectGameObject = async function (game, index) {
+const collectGameObject = async function (game) {
   const [cover] = await getGameCover(game.cover);
   const hash = cover.image_id;
   const url = `${state.api.smallCoverURL}/${hash}.jpg`;
@@ -107,7 +107,6 @@ const collectGameObject = async function (game, index) {
   const imageURL = URL.createObjectURL(imageBlob);
   return {
     ...game,
-    number: index + 1,
     score: Math.floor(game.total_rating),
     year: new Date(game.first_release_date * 1000).getFullYear(),
     imageURL,
@@ -117,6 +116,7 @@ const collectGameObject = async function (game, index) {
 const waitUntil = async function (gamesQueue) {
   let gameObjects = [];
   const numberGames = gamesQueue.length;
+  let index = 0;
   return new Promise((resolve) => {
     let intervalId = null;
     intervalId = setInterval(async () => {
@@ -124,7 +124,12 @@ const waitUntil = async function (gamesQueue) {
       while (games.length < state.api.rateLimit && !gamesQueue.isEmpty)
         games.push(gamesQueue.dequeue());
       games = await Promise.all(
-        games.map(async (game, index) => await collectGameObject(game, index))
+        games.map(async (game) => {
+          index++;
+          game.number = index;
+          game = await collectGameObject(game);
+          return game;
+        })
       );
       gameObjects = gameObjects.concat(games);
       if (gameObjects.length === numberGames) {

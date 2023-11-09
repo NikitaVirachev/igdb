@@ -67,6 +67,10 @@ const controlLoginBtnClick = function (e) {
   if (!link) return;
 };
 
+const controllSetImagesSrc = function (covers) {
+  tableView.setImagesSrc(covers);
+};
+
 export const init = async function () {
   searchFormView.addHandlSubmitForm(controlSubmitSearchForm);
   navbarView.addHandleMenuClick(controlNavbarClick);
@@ -80,9 +84,7 @@ export const init = async function () {
     await model.getAccessToken();
     const games = await model.getTopGames();
     tableView.createTable(games);
-    const covers = await model.getGameCovers(games);
-    tableView.setImagesSrc(covers);
-    // console.log(covers);
+    await model.getGameCovers(games, controllSetImagesSrc);
   } catch (error) {
     console.error(`${error} 💥`);
   }

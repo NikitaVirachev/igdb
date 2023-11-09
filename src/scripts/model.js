@@ -108,7 +108,7 @@ const getImageURL = async function (game) {
   return { id: game.id, imageURL };
 };
 
-const waitUntil = async function (queue, callback) {
+const waitUntil = async function (queue, callback, resultsFlow) {
   let resultArray = [];
   const queueLength = queue.length;
   return new Promise((resolve) => {
@@ -120,6 +120,7 @@ const waitUntil = async function (queue, callback) {
       limitValues = await Promise.all(
         limitValues.map(async (value) => await callback(value))
       );
+      resultsFlow(limitValues);
       resultArray = resultArray.concat(limitValues);
       if (resultArray.length === queueLength) {
         resolve(resultArray);
@@ -129,13 +130,13 @@ const waitUntil = async function (queue, callback) {
   });
 };
 
-export const getGameCovers = async function (games) {
+export const getGameCovers = async function (games, gameCoversHandler) {
   const gamesQueue = new Queue();
   games.forEach((game) => {
     gamesQueue.enqueue(game);
   });
 
-  return await waitUntil(gamesQueue, getImageURL);
+  return await waitUntil(gamesQueue, getImageURL, gameCoversHandler);
 };
 
 export const getTopGames = async function () {
@@ -143,7 +144,7 @@ export const getTopGames = async function () {
     const raw =
       'fields id, name, url, cover, first_release_date, total_rating;' +
       'where (total_rating > 0 & total_rating_count > 100) & (aggregated_rating_count > 5) & category = (0, 8, 9);' +
-      'limit 10;' +
+      'limit 100;' +
       'sort total_rating desc;';
     const requestOptions = {
       method: 'POST',
@@ -160,7 +161,7 @@ export const getTopGames = async function () {
     const gameObjects = games.map((game, index) => {
       return {
         ...game,
-        number: index,
+        number: index + 1,
         score: Math.floor(game.total_rating),
         year: new Date(game.first_release_date * 1000).getFullYear(),
       };

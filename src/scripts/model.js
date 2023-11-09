@@ -99,45 +99,43 @@ const getGameCover = async function (coverID) {
   }
 };
 
-const collectGameObject = async function (game) {
+const getImageURL = async function (game) {
   const [cover] = await getGameCover(game.cover);
   const hash = cover.image_id;
   const url = `${state.api.smallCoverURL}/${hash}.jpg`;
   const imageBlob = await getImage(url);
   const imageURL = URL.createObjectURL(imageBlob);
-  return {
-    ...game,
-    score: Math.floor(game.total_rating),
-    year: new Date(game.first_release_date * 1000).getFullYear(),
-    imageURL,
-  };
+  return { id: game.id, imageURL };
 };
 
-const waitUntil = async function (gamesQueue) {
-  let gameObjects = [];
-  const numberGames = gamesQueue.length;
-  let index = 0;
+const waitUntil = async function (queue, callback) {
+  let resultArray = [];
+  const queueLength = queue.length;
   return new Promise((resolve) => {
     let intervalId = null;
     intervalId = setInterval(async () => {
-      let games = [];
-      while (games.length < state.api.rateLimit && !gamesQueue.isEmpty)
-        games.push(gamesQueue.dequeue());
-      games = await Promise.all(
-        games.map(async (game) => {
-          index++;
-          game.number = index;
-          game = await collectGameObject(game);
-          return game;
-        })
+      let limitValues = [];
+      while (limitValues.length < state.api.rateLimit && !queue.isEmpty)
+        limitValues.push(queue.dequeue());
+      limitValues = await Promise.all(
+        limitValues.map(async (value) => await callback(value))
       );
-      gameObjects = gameObjects.concat(games);
-      if (gameObjects.length === numberGames) {
-        resolve(gameObjects);
+      resultArray = resultArray.concat(limitValues);
+      if (resultArray.length === queueLength) {
+        resolve(resultArray);
         clearInterval(intervalId);
       }
     }, 1000);
   });
+};
+
+export const getGameCovers = async function (games) {
+  const gamesQueue = new Queue();
+  games.forEach((game) => {
+    gamesQueue.enqueue(game);
+  });
+
+  return await waitUntil(gamesQueue, getImageURL);
 };
 
 export const getTopGames = async function () {
@@ -159,12 +157,15 @@ export const getTopGames = async function () {
       requestOptions,
       'Failed request to receive top of games'
     );
-    const gamesQueue = new Queue();
-    games.forEach((game) => {
-      gamesQueue.enqueue(game);
+    const gameObjects = games.map((game, index) => {
+      return {
+        ...game,
+        number: index,
+        score: Math.floor(game.total_rating),
+        year: new Date(game.first_release_date * 1000).getFullYear(),
+      };
     });
-
-    return await waitUntil(gamesQueue);
+    return gameObjects;
   } catch (error) {
     console.error(`${error} 💥`); // Исправлено для корректного вывода ошибки
     if (error instanceof HttpError && error.status === 401) {

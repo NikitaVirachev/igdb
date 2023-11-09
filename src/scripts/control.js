@@ -80,6 +80,9 @@ export const init = async function () {
     await model.getAccessToken();
     const games = await model.getTopGames();
     tableView.createTable(games);
+    const covers = await model.getGameCovers(games);
+    tableView.setImagesSrc(covers);
+    // console.log(covers);
   } catch (error) {
     console.error(`${error} 💥`);
   }

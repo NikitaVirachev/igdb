@@ -5,14 +5,14 @@ class TableView extends View {
 
   _generateGameMarkup(game) {
     return `
-      <tr>
+      <tr key=${game.id}>
         <td><h4 class="table__number text--muted">${game.number}</h4></td>
         <td>
           <a href="/games/baldurs-gate-3">
             <div class="table__game-cover">
               <img
-                src=${game.imageURL}
-                alt="Cover of Buldurs Gate 3"
+                src=""
+                alt="Cover of ${game.name}"
               />
             </div>
           </a>
@@ -50,7 +50,13 @@ class TableView extends View {
     `;
   }
 
-  _createGameRow(game) {}
+  setImagesSrc(covers) {
+    covers.map((cover) => {
+      const row = this._table.querySelector(`tr[key='${cover.id}']`);
+      const img = row.querySelector('img');
+      img.src = cover.imageURL;
+    });
+  }
 
   createTable(games) {
     this._table.innerHTML = '';

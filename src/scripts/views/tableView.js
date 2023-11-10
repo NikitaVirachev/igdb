@@ -8,7 +8,7 @@ class TableView extends View {
       <tr key=${game.id}>
         <td><h4 class="table__number text--muted">${game.number}</h4></td>
         <td>
-          <a href="/games/baldurs-gate-3">
+          <a href="#">
             <div class="table__game-cover">
               <img
                 src=""

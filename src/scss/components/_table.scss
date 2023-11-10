@@ -75,6 +75,12 @@
     }
   }
 
+  &__stub {
+    width: 4rem;
+    height: 5.3rem;
+    background: var(--grey-color);
+  }
+
   &__game-name {
     a:link,
     a:visited {

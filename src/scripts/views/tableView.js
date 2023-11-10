@@ -10,10 +10,7 @@ class TableView extends View {
         <td>
           <a href="#">
             <div class="table__game-cover">
-              <img
-                src=""
-                alt="Cover of ${game.name}"
-              />
+              <div class="table__stub"></div>
             </div>
           </a>
         </td>
@@ -50,11 +47,20 @@ class TableView extends View {
     `;
   }
 
+  _generateGameCoverMarkup(cover) {
+    return `
+      <img
+        src=${cover.imageURL}
+        alt="Cover of"
+      />
+  `;
+  }
+
   setImagesSrc(covers) {
     covers.map((cover) => {
       const row = this._table.querySelector(`tr[key='${cover.id}']`);
-      const img = row.querySelector('img');
-      img.src = cover.imageURL;
+      const gameCoverCell = row.querySelector('.table__game-cover');
+      gameCoverCell.innerHTML = this._generateGameCoverMarkup(cover);
     });
   }
 

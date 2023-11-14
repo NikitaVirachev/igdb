@@ -1,0 +1,11 @@
+@import '../../../scss/abstracts/mixins';
+@import '../../../scss/abstracts/variables';
+
+.footer-separator {
+  display: flex;
+  justify-content: space-between;
+
+  @include respondMin(laptopS) {
+    display: none;
+  }
+}

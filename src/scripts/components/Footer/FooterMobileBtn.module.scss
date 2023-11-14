@@ -1,0 +1,18 @@
+@import '../../../scss/abstracts/mixins';
+@import '../../../scss/abstracts/variables';
+
+.footer-mobile-btn:link,
+.footer-mobile-btn:visited {
+  font-weight: 600;
+  padding: 1.3rem 4rem;
+  font-size: 1.7rem;
+  line-height: 1.3333333;
+  text-decoration: none;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  color: var(--primary-color);
+}
+
+.footer-mobile-btn:hover,
+.footer-mobile-btn:active {
+  color: var(--dark-grey-color);
+}

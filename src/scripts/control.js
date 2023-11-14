@@ -3,7 +3,6 @@ import searchFormView from './views/forms/searchFormView.js';
 import navbarView from './views/menu/navbarView.js';
 import dropdownMenuView from './views/menu/dropdownMenuView.js';
 import asideNavView from './views/menu/asideNavView.js';
-import footerView from './views/menu/footerView.js';
 import loginView from './views/menu/loginView.js';
 import tableView from './views/tableView.js';
 
@@ -54,13 +53,6 @@ const controlAsideNavClick = function (e) {
   asideNavView.toggleNavbarLink(link);
 };
 
-const controlFooterBtnClick = function (e) {
-  e.preventDefault();
-  const link = e.target.closest('#back-to-top');
-  if (!link) return;
-  footerView.scrollToTop();
-};
-
 const controlLoginBtnClick = function (e) {
   e.preventDefault();
   const link = e.target.closest('#login');
@@ -78,7 +70,6 @@ export const init = async function () {
   window.addEventListener('click', controlMenuClick);
   navbarView.addHandleBurgerBtnClick(controlNavbarBurgerBtnClick);
   asideNavView.addHandleMenuClick(controlAsideNavClick);
-  footerView.addHandleMenuClick(controlFooterBtnClick);
   loginView.addHandleMenuClick(controlLoginBtnClick);
   try {
     await model.getAccessToken();

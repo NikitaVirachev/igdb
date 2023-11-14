@@ -1,0 +1,15 @@
+@import '../../../scss/abstracts/mixins';
+@import '../../../scss/abstracts/variables';
+
+.footer-link:link,
+.footer-link:visited {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-size: 1.3rem;
+  line-height: 1.85rem;
+}
+
+.footer-link:link,
+.footer-link:visited {
+  color: var(--primary-color);
+  text-decoration: none;
+}

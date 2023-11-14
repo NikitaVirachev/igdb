@@ -89,10 +89,10 @@ const getGameCover = async function (coverID) {
     return cover;
   } catch (error) {
     console.error(`${error} 💥`);
-    if (error instanceof HttpError && error.status === 401) {
-      // Проверка на HttpError и статус 401
-      await getAccessToken(); // Ожидание получения нового токена
-      return getGameCover(coverID); // Рекурсивный вызов после обновления токена
+    if (error instanceof HttpError && error.statusCode === 401) {
+      console.error('Token invalid');
+      await getAccessToken();
+      return getGameCover(coverID);
     } else {
       throw error; // Переброс остальных ошибок
     }
@@ -168,11 +168,11 @@ export const getTopGames = async function () {
     });
     return gameObjects;
   } catch (error) {
-    console.error(`${error} 💥`); // Исправлено для корректного вывода ошибки
-    if (error instanceof HttpError && error.status === 401) {
-      // Проверка на HttpError и статус 401
-      await getAccessToken(); // Ожидание получения нового токена
-      return getTopGames(); // Рекурсивный вызов после обновления токена
+    console.error(`${error} 💥`);
+    if (error instanceof HttpError && error.statusCode === 401) {
+      console.error('Token invalid');
+      await getAccessToken();
+      return getTopGames();
     } else {
       throw error; // Переброс остальных ошибок
     }

@@ -141,13 +141,12 @@ const Footer = function () {
         </FooterLinks>
         <div className={classes.footer__made}>
           <span>IGDB is operated by </span>
-          <a
-            className={classes.footer__link}
+          <FooterLink
+            name="Twitch"
             href="https://www.twitch.tv"
             target="_blank"
-          >
-            Twitch
-          </a>
+            rel=""
+          />
         </div>
       </div>
     </footer>

@@ -2,7 +2,6 @@ import * as model from './model.js';
 import searchFormView from './views/forms/searchFormView.js';
 import navbarView from './views/menu/navbarView.js';
 import dropdownMenuView from './views/menu/dropdownMenuView.js';
-import asideNavView from './views/menu/asideNavView.js';
 import loginView from './views/menu/loginView.js';
 import tableView from './views/tableView.js';
 
@@ -45,14 +44,6 @@ const controlNavbarBurgerBtnClick = function (e) {
   navbarView.toggleNavbarCollapse();
 };
 
-const controlAsideNavClick = function (e) {
-  e.preventDefault();
-  const link = e.target.closest('.aside__link');
-  if (!link) return;
-  asideNavView.deactivateNavbar();
-  asideNavView.toggleNavbarLink(link);
-};
-
 const controlLoginBtnClick = function (e) {
   e.preventDefault();
   const link = e.target.closest('#login');
@@ -69,7 +60,6 @@ export const init = async function () {
   dropdownMenuView.addHandleMenuClick(controlDropdownMenuClick);
   window.addEventListener('click', controlMenuClick);
   navbarView.addHandleBurgerBtnClick(controlNavbarBurgerBtnClick);
-  asideNavView.addHandleMenuClick(controlAsideNavClick);
   loginView.addHandleMenuClick(controlLoginBtnClick);
   try {
     await model.getAccessToken();

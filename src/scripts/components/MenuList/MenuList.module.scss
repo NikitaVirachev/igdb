@@ -1,0 +1,24 @@
+@import '../../../scss/abstracts/mixins';
+@import '../../../scss/abstracts/variables';
+
+.menu-list {
+  list-style: none;
+  display: flex;
+
+  &--column {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  &--row {
+    flex-direction: row;
+  }
+
+  &--navbar {
+    @include respondMax(laptopXS) {
+      flex-direction: column;
+      align-items: start;
+      gap: 1rem;
+    }
+  }
+}

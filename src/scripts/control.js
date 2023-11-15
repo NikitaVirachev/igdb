@@ -1,8 +1,8 @@
 import * as model from './model.js';
-import searchFormView from './views/forms/searchFormView.js';
-import navbarView from './views/menu/navbarView.js';
-import dropdownMenuView from './views/menu/dropdownMenuView.js';
-import loginView from './views/menu/loginView.js';
+// import searchFormView from './views/forms/searchFormView.js';
+// import navbarView from './views/menu/navbarView.js';
+// import dropdownMenuView from './views/menu/dropdownMenuView.js';
+// import loginView from './views/menu/loginView.js';
 import tableView from './views/tableView.js';
 
 const controlSubmitSearchForm = function (e) {
@@ -55,12 +55,12 @@ const controllSetImagesSrc = function (covers) {
 };
 
 export const init = async function () {
-  searchFormView.addHandlSubmitForm(controlSubmitSearchForm);
-  navbarView.addHandleMenuClick(controlNavbarClick);
-  dropdownMenuView.addHandleMenuClick(controlDropdownMenuClick);
-  window.addEventListener('click', controlMenuClick);
-  navbarView.addHandleBurgerBtnClick(controlNavbarBurgerBtnClick);
-  loginView.addHandleMenuClick(controlLoginBtnClick);
+  // searchFormView.addHandlSubmitForm(controlSubmitSearchForm);
+  // navbarView.addHandleMenuClick(controlNavbarClick);
+  // dropdownMenuView.addHandleMenuClick(controlDropdownMenuClick);
+  // window.addEventListener('click', controlMenuClick);
+  // navbarView.addHandleBurgerBtnClick(controlNavbarBurgerBtnClick);
+  // loginView.addHandleMenuClick(controlLoginBtnClick);
   try {
     await model.getAccessToken();
     const games = await model.getTopGames();

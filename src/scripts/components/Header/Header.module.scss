@@ -1,0 +1,25 @@
+@import '../../../scss/abstracts/mixins';
+@import '../../../scss/abstracts/variables';
+
+.header {
+  max-width: var(--width-page);
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: 5rem;
+
+  @include respondMax(laptopXS) {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 5rem auto;
+  }
+
+  &__burder {
+    display: none;
+    justify-self: end;
+
+    @include respondMax(laptopXS) {
+      display: block;
+    }
+  }
+}

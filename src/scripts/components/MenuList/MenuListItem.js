@@ -4,7 +4,7 @@ import classes from './MenuListItem.module.scss';
 
 const MenuListItem = function (props) {
   return (
-    <li className={`${classes['menu-list-item']} ${props.classNames}`}></li>
+    <li className={`${classes['menu-list-item']} ${props.className}`}></li>
   );
 };
 

@@ -4,7 +4,7 @@ import classes from './Pad.module.scss';
 
 const Pad = function (props) {
   return (
-    <div className={`${classes.pad} ${props.classNames}`}>
+    <div className={`${classes.pad} ${props.className}`}>
       <h5 className={classes.pad__header}>How are the top lists calculated?</h5>
       <p className={classes.pad__description}>
         We use a <strong>weighted rating</strong>, meaning we calculate a new

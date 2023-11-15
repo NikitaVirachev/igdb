@@ -36,7 +36,7 @@ const Aside = function () {
     <aside className={classes.aside}>
       <h2 className={classes.aside__header}>Other Top 100s</h2>
       <nav id="aside-nav" className={classes.aside__nav}>
-        <MenuList classNames="menu-list--column">
+        <MenuList className="menu-list--column">
           {navigationItems.map((item) => (
             <li key={item.name}>
               <AsideLink

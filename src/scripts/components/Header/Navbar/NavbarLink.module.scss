@@ -1,0 +1,46 @@
+@import '../../../../scss/abstracts/mixins';
+@import '../../../../scss/abstracts/variables';
+
+.navbar-link {
+  &:link,
+  &:visited {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    color: var(--white-color);
+    text-decoration: none;
+    text-transform: uppercase;
+
+    display: flex;
+    align-items: center;
+    padding: 0 1.5rem;
+
+    @include respondMax(laptopXS) {
+      padding: 1rem 1.5rem;
+      height: 4rem;
+    }
+  }
+
+  &:hover,
+  &:active {
+    color: var(--dark-primary-color);
+
+    .navbar__icon,
+    .navbar__caret {
+      fill: var(--dark-primary-color);
+    }
+  }
+
+  &--primary {
+    background: var(--primary-color);
+
+    &:hover,
+    &:active {
+      color: var(--white-color);
+
+      .navbar__icon,
+      .navbar__caret {
+        fill: var(--white-color);
+      }
+    }
+  }
+}

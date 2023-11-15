@@ -126,14 +126,17 @@ const Footer = function () {
         </FooterMobileBtns>
         <FooterSeparator />
         <FooterLinks>
-          {footerLinksArr.map((link) => (
-            <FooterLink
-              key={link.id}
-              name={link.name}
-              href={link.href}
-              target={link.target}
-              rel={link.rel}
-            />
+          {footerLinksArr.map((link, index, links) => (
+            <React.Fragment>
+              <FooterLink
+                key={link.id}
+                name={link.name}
+                href={link.href}
+                target={link.target}
+                rel={link.rel}
+              />
+              {index !== links.length - 1 && <span> - </span>}
+            </React.Fragment>
           ))}
         </FooterLinks>
         <div className={classes.footer__made}>

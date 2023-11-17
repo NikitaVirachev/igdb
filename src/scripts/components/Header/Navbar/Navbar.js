@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import classes from './Navbar.module.scss';
+import sprite from '../../../../img/header-sprite.svg';
 import NavbarContainer from './NavbarContainer';
 import Search from '../Search/Search';
 import MenuList from '../../MenuList/MenuList';
@@ -25,7 +26,7 @@ const Navbar = function () {
       >
         <Search className={classes.navbar__search} />
         <MenuList className={classes['navbar__menu-list']} isRow={true}>
-          <MenuListItem className="menu-list__item--navbar">
+          <MenuListItem className={classes['navbar__menu-list-item']}>
             <NavbarLink
               className=""
               id="games-navbar"
@@ -37,11 +38,11 @@ const Navbar = function () {
                 <svg
                   className={`${classes.navbar__icon} ${classes['navbar__icon--games']}`}
                 >
-                  <use xlinkHref="/src/img/header-sprite.svg#icon-gamepad"></use>
+                  <use xlinkHref={`${sprite}#icon-gamepad`}></use>
                 </svg>
                 <span className={classes.navbar__title}>games</span>
                 <svg className={classes.navbar__caret}>
-                  <use xlinkHref="/src/img/header-sprite.svg#icon-caret-down"></use>
+                  <use xlinkHref={`${sprite}#icon-caret-down`}></use>
                 </svg>
               </div>
             </NavbarLink>

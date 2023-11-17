@@ -4,10 +4,4 @@
 .menu-list-item {
   display: flex;
   position: relative;
-
-  &--navbar {
-    @include respondMax(laptopXS) {
-      flex-direction: column;
-    }
-  }
 }

@@ -65,4 +65,10 @@
       gap: 1rem;
     }
   }
+
+  &__menu-list-item {
+    @include respondMax(laptopXS) {
+      flex-direction: column;
+    }
+  }
 }

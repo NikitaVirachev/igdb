@@ -5,7 +5,9 @@ import classes from './NavbarLink.module.scss';
 const NavbarLink = function (props) {
   return (
     <a
-      className={`${props.className} ${classes['navbar-link']}`}
+      className={`${classes['navbar-link']} ${
+        props.isPrimary ? classes['navbar-link--primary'] : ''
+      }`}
       id={props.id}
       data-section={props.data}
       href={props.href}

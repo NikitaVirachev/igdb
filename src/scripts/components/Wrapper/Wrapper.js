@@ -4,7 +4,7 @@ import classes from './Wrapper.module.scss';
 
 const Wrapper = function (props) {
   return (
-    <div className={`${classes.wrapper} ${props.className}`}>
+    <div className={`${classes.wrapper} ${classes[props.className]}`}>
       {props.children}
     </div>
   );

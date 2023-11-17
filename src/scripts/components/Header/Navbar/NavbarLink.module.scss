@@ -24,8 +24,7 @@
   &:active {
     color: var(--dark-primary-color);
 
-    .navbar__icon,
-    .navbar__caret {
+    svg {
       fill: var(--dark-primary-color);
     }
   }
@@ -37,8 +36,7 @@
     &:active {
       color: var(--white-color);
 
-      .navbar__icon,
-      .navbar__caret {
+      svg {
         fill: var(--white-color);
       }
     }

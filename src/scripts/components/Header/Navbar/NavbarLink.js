@@ -1,6 +1,7 @@
 import React from 'react';
 
 import classes from './NavbarLink.module.scss';
+import sprite from '../../../../img/header-sprite.svg';
 
 const NavbarLink = function (props) {
   return (
@@ -13,7 +14,17 @@ const NavbarLink = function (props) {
       href={props.href}
       onClick={props.onClick}
     >
-      {props.children}
+      <div className={classes['navbar-link__content']}>
+        <svg
+          className={`${classes['navbar-link__icon']} ${classes['navbar-link__icon--games']}`}
+        >
+          <use xlinkHref={`${sprite}#${props.icon}`}></use>
+        </svg>
+        <span className={classes['navbar-link__title']}>{props.name}</span>
+        <svg className={classes['navbar-link__caret']}>
+          <use xlinkHref={`${sprite}#icon-caret-down`}></use>
+        </svg>
+      </div>
     </a>
   );
 };

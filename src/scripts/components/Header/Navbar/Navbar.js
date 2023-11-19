@@ -1,7 +1,6 @@
 import React, { useEffect, useReducer, useRef } from 'react';
 
 import classes from './Navbar.module.scss';
-import sprite from '../../../../img/header-sprite.svg';
 import NavbarContainer from './NavbarContainer';
 import Search from '../Search/Search';
 import MenuList from '../../MenuList/MenuList';
@@ -128,19 +127,9 @@ const Navbar = function () {
               href="#"
               onClick={dropGamesMenuHandler}
               isPrimary={gamesMenuIsDroped}
-            >
-              <div className={classes.navbar__content}>
-                <svg
-                  className={`${classes.navbar__icon} ${classes['navbar__icon--games']}`}
-                >
-                  <use xlinkHref={`${sprite}#icon-gamepad`}></use>
-                </svg>
-                <span className={classes.navbar__title}>games</span>
-                <svg className={classes.navbar__caret}>
-                  <use xlinkHref={`${sprite}#icon-caret-down`}></use>
-                </svg>
-              </div>
-            </NavbarLink>
+              name={'games'}
+              icon={'icon-gamepad'}
+            />
 
             {gamesMenuIsDroped && (
               <DropDownMenu
@@ -160,19 +149,9 @@ const Navbar = function () {
               href="#"
               onClick={dropDatabaseMenuHandler}
               isPrimary={databaseMenuIsDroped}
-            >
-              <div className={classes.navbar__content}>
-                <svg
-                  className={`${classes.navbar__icon} ${classes['navbar__icon--games']}`}
-                >
-                  <use xlinkHref={`${sprite}#icon-database`}></use>
-                </svg>
-                <span className={classes.navbar__title}>database</span>
-                <svg className={classes.navbar__caret}>
-                  <use xlinkHref={`${sprite}#icon-caret-down`}></use>
-                </svg>
-              </div>
-            </NavbarLink>
+              name={'database'}
+              icon={'icon-database'}
+            />
 
             {databaseMenuIsDroped && (
               <DropDownMenu

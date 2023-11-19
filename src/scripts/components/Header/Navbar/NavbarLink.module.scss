@@ -41,4 +41,37 @@
       }
     }
   }
+
+  &__content {
+    display: flex;
+    gap: 0.4rem;
+  }
+
+  &__icon,
+  &__caret {
+    height: 1.3rem;
+    fill: var(--white-color);
+  }
+
+  &__caret {
+    width: 0.7rem;
+  }
+
+  &__icon {
+    &--games {
+      width: 1.5rem;
+    }
+
+    &--database {
+      width: 1.5rem;
+    }
+
+    &--community {
+      width: 1.5rem;
+    }
+
+    &--help {
+      width: 1.5rem;
+    }
+  }
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import classes from './Header.module.scss';
 import Burger from './Burger';
@@ -7,9 +7,15 @@ import Navbar from './Navbar/Navbar';
 import Auth from './Auth';
 
 const Header = function () {
+  const [isCollapsed, setIsCollapsed] = useState(true);
+
   const authHandler = (event) => {
     event.preventDefault();
     console.log(event.target.href);
+  };
+
+  const collapleNavbarMenu = () => {
+    setIsCollapsed((prev) => !prev);
   };
 
   return (
@@ -17,10 +23,10 @@ const Header = function () {
       <Logo />
 
       <div className={classes.header__burder}>
-        <Burger />
+        <Burger onClick={collapleNavbarMenu} />
       </div>
 
-      <Navbar />
+      <Navbar isCollapsed={isCollapsed} />
       <Auth href="#" onClick={authHandler} />
     </header>
   );

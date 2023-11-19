@@ -122,7 +122,7 @@ const dropdownMenusReducer = (state, action) => {
   return initialDropdownMenusState;
 };
 
-const Navbar = function () {
+const Navbar = function (props) {
   const gamesNavbarLinkRef = useRef();
   const databaseNavbarLinkRef = useRef();
   const communityNavbarLinkRef = useRef();
@@ -188,7 +188,9 @@ const Navbar = function () {
     <NavbarContainer>
       <nav
         id="navbar"
-        className={`${classes.navbar} ${classes['navbar--collapsed']}`}
+        className={`${classes.navbar} ${
+          props.isCollapsed ? classes['navbar--collapsed'] : ''
+        }`}
       >
         <Search className={classes.navbar__search} />
         <MenuList className={classes['navbar__menu-list']} isRow={true}>

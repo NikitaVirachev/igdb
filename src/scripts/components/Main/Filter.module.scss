@@ -1,0 +1,12 @@
+@import '../../../scss/abstracts/mixins';
+@import '../../../scss/abstracts/variables';
+
+.filter {
+  display: grid;
+  grid-template: repeat(3, 1fr) / auto;
+  column-gap: 2rem;
+
+  @include respondMin(laptopS) {
+    grid-template: auto / 2fr 1fr 1fr;
+  }
+}

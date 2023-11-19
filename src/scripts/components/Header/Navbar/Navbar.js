@@ -93,7 +93,7 @@ const initialDropdownMenusState = {
 const dropdownMenusReducer = (state, action) => {
   if (action.type === 'DROP_GAMES_MENU')
     return {
-      gamesMenuIsDroped: true,
+      gamesMenuIsDroped: !state.gamesMenuIsDroped,
       databaseMenuIsDroped: false,
       communityMenuIsDroped: false,
       helpMenuIsDroped: false,
@@ -101,7 +101,7 @@ const dropdownMenusReducer = (state, action) => {
   if (action.type === 'DROP_DATABASE_MENU')
     return {
       gamesMenuIsDroped: false,
-      databaseMenuIsDroped: true,
+      databaseMenuIsDroped: !state.databaseMenuIsDroped,
       communityMenuIsDroped: false,
       helpMenuIsDroped: false,
     };
@@ -109,7 +109,7 @@ const dropdownMenusReducer = (state, action) => {
     return {
       gamesMenuIsDroped: false,
       databaseMenuIsDroped: false,
-      communityMenuIsDroped: true,
+      communityMenuIsDroped: !state.communityMenuIsDroped,
       helpMenuIsDroped: false,
     };
   if (action.type === 'DROP_HELP_MENU')
@@ -117,7 +117,7 @@ const dropdownMenusReducer = (state, action) => {
       gamesMenuIsDroped: false,
       databaseMenuIsDroped: false,
       communityMenuIsDroped: false,
-      helpMenuIsDroped: true,
+      helpMenuIsDroped: !state.helpMenuIsDroped,
     };
   return initialDropdownMenusState;
 };

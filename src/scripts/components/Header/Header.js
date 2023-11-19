@@ -17,7 +17,7 @@ const Header = function () {
       <Logo />
 
       <div className={classes.header__burder}>
-        <Burger id="navbar-burger-btn" />
+        <Burger />
       </div>
 
       <Navbar />

@@ -127,9 +127,8 @@ const Footer = function () {
         <FooterSeparator />
         <FooterLinks>
           {footerLinksArr.map((link, index, links) => (
-            <React.Fragment>
+            <React.Fragment key={link.id}>
               <FooterLink
-                key={link.id}
                 name={link.name}
                 href={link.href}
                 target={link.target}

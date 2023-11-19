@@ -59,10 +59,35 @@ const dropdownCommunityLinks = [
   },
 ];
 
+const dropdownHelpLinks = [
+  {
+    id: 'helpLinks1',
+    links: [
+      { name: ' About IGDB ', imageHref: 'icon-information-solid', href: '#' },
+      {
+        name: ' Contributions ',
+        imageHref: 'icon-information-solid',
+        href: '#',
+      },
+      {
+        name: ' UserVoice ',
+        imageHref: 'icon-mic',
+        href: '#',
+      },
+      {
+        name: ' Contact ',
+        imageHref: 'icon-envelope-o',
+        href: '#',
+      },
+    ],
+  },
+];
+
 const initialDropdownMenusState = {
   gamesMenuIsDroped: false,
   databaseMenuIsDroped: false,
   communityMenuIsDroped: false,
+  helpMenuIsDroped: false,
 };
 
 const dropdownMenusReducer = (state, action) => {
@@ -71,18 +96,28 @@ const dropdownMenusReducer = (state, action) => {
       gamesMenuIsDroped: true,
       databaseMenuIsDroped: false,
       communityMenuIsDroped: false,
+      helpMenuIsDroped: false,
     };
   if (action.type === 'DROP_DATABASE_MENU')
     return {
       gamesMenuIsDroped: false,
       databaseMenuIsDroped: true,
       communityMenuIsDroped: false,
+      helpMenuIsDroped: false,
     };
   if (action.type === 'DROP_COMMUNITY_MENU')
     return {
       gamesMenuIsDroped: false,
       databaseMenuIsDroped: false,
       communityMenuIsDroped: true,
+      helpMenuIsDroped: false,
+    };
+  if (action.type === 'DROP_HELP_MENU')
+    return {
+      gamesMenuIsDroped: false,
+      databaseMenuIsDroped: false,
+      communityMenuIsDroped: false,
+      helpMenuIsDroped: true,
     };
   return initialDropdownMenusState;
 };
@@ -91,6 +126,7 @@ const Navbar = function () {
   const gamesNavbarLinkRef = useRef();
   const databaseNavbarLinkRef = useRef();
   const communityNavbarLinkRef = useRef();
+  const helpNavbarLinkRef = useRef();
 
   const [dropdownMenusState, dispatchDropdownMenusState] = useReducer(
     dropdownMenusReducer,
@@ -103,13 +139,19 @@ const Navbar = function () {
       if (
         gamesNavbarLinkRef.current.contains(event.target) ||
         databaseNavbarLinkRef.current.contains(event.target) ||
-        communityNavbarLinkRef.current.contains(event.target)
+        communityNavbarLinkRef.current.contains(event.target) ||
+        helpNavbarLinkRef.current.contains(event.target)
       )
         return;
 
       dispatchDropdownMenusState({ type: 'DROP_ALL' });
     });
-  }, [gamesNavbarLinkRef, databaseNavbarLinkRef]);
+  }, [
+    gamesNavbarLinkRef,
+    databaseNavbarLinkRef,
+    communityNavbarLinkRef,
+    helpNavbarLinkRef,
+  ]);
 
   const dropGamesMenuHandler = (event) => {
     event.preventDefault();
@@ -126,6 +168,11 @@ const Navbar = function () {
     dispatchDropdownMenusState({ type: 'DROP_COMMUNITY_MENU' });
   };
 
+  const dropHelpMenuHandler = (event) => {
+    event.preventDefault();
+    dispatchDropdownMenusState({ type: 'DROP_HELP_MENU' });
+  };
+
   const dropdownMenuLinkClickHandler = (event) => {
     event.preventDefault();
     dispatchDropdownMenusState({ type: 'DROP_ALL' });
@@ -135,6 +182,7 @@ const Navbar = function () {
   const { gamesMenuIsDroped } = dropdownMenusState;
   const { databaseMenuIsDroped } = dropdownMenusState;
   const { communityMenuIsDroped } = dropdownMenusState;
+  const { helpMenuIsDroped } = dropdownMenusState;
 
   return (
     <NavbarContainer>
@@ -206,6 +254,28 @@ const Navbar = function () {
               <DropDownMenu
                 onClick={dropdownMenuLinkClickHandler}
                 links={dropdownCommunityLinks}
+              />
+            )}
+          </MenuListItem>
+
+          <MenuListItem
+            className={classes['navbar__menu-list-item']}
+            ref={helpNavbarLinkRef}
+          >
+            <NavbarLink
+              id="help-navbar"
+              data-section="help"
+              href="#"
+              onClick={dropHelpMenuHandler}
+              isPrimary={helpMenuIsDroped}
+              name={'help'}
+              icon={'icon-question-circle'}
+            />
+
+            {helpMenuIsDroped && (
+              <DropDownMenu
+                onClick={dropdownMenuLinkClickHandler}
+                links={dropdownHelpLinks}
               />
             )}
           </MenuListItem>

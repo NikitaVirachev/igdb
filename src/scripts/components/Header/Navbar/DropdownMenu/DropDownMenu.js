@@ -27,6 +27,7 @@ const DropDownMenu = function (props) {
                       <DropDownMenuLink
                         href={link.href}
                         imageHref={link.imageHref}
+                        onClick={props.onClick}
                       >
                         {link.name}
                       </DropDownMenuLink>

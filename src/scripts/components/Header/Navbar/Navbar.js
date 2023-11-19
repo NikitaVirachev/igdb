@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useReducer, useRef } from 'react';
 
 import classes from './Navbar.module.scss';
 import sprite from '../../../../img/header-sprite.svg';
@@ -8,7 +8,6 @@ import MenuList from '../../MenuList/MenuList';
 import MenuListItem from '../../MenuList/MenuListItem';
 import NavbarLink from './NavbarLink';
 import DropDownMenu from './DropdownMenu/DropDownMenu';
-import useDropdownMenu from '../../../hooks/use-dropdown-menu';
 
 const dropdownGamesLinks = [
   {
@@ -51,11 +50,65 @@ const dropdownDatabaseLinks = [
   },
 ];
 
+const initialDropdownMenusState = {
+  gamesMenuIsDroped: false,
+  databaseMenuIsDroped: false,
+};
+
+const dropdownMenusReducer = (state, action) => {
+  if (action.type === 'DROP_GAMES_MENU')
+    return {
+      gamesMenuIsDroped: true,
+      databaseMenuIsDroped: false,
+    };
+  if (action.type === 'DROP_DATABASE_MENU')
+    return {
+      gamesMenuIsDroped: false,
+      databaseMenuIsDroped: true,
+    };
+  return initialDropdownMenusState;
+};
+
 const Navbar = function () {
-  const { isDrop: gamesIsDrop, toggleDropdownMenu: togleGames } =
-    useDropdownMenu(false);
-  const { isDrop: databaseIsDrop, toggleDropdownMenu: togleDatabase } =
-    useDropdownMenu(false);
+  const gamesNavbarLinkRef = useRef();
+  const databaseNavbarLinkRef = useRef();
+
+  const [dropdownMenusState, dispatchDropdownMenusState] = useReducer(
+    dropdownMenusReducer,
+    initialDropdownMenusState
+  );
+
+  useEffect(() => {
+    window.addEventListener('click', (event) => {
+      event.preventDefault();
+      if (
+        gamesNavbarLinkRef.current.contains(event.target) ||
+        databaseNavbarLinkRef.current.contains(event.target)
+      )
+        return;
+
+      dispatchDropdownMenusState({ type: 'DROP_ALL' });
+    });
+  }, [gamesNavbarLinkRef, databaseNavbarLinkRef]);
+
+  const dropGamesMenuHandler = (event) => {
+    event.preventDefault();
+    dispatchDropdownMenusState({ type: 'DROP_GAMES_MENU' });
+  };
+
+  const dropDatabaseMenuHandler = (event) => {
+    event.preventDefault();
+    dispatchDropdownMenusState({ type: 'DROP_DATABASE_MENU' });
+  };
+
+  const dropdownMenuLinkClickHandler = (event) => {
+    event.preventDefault();
+    dispatchDropdownMenusState({ type: 'DROP_ALL' });
+    console.log(event.target.href);
+  };
+
+  const { gamesMenuIsDroped } = dropdownMenusState;
+  const { databaseMenuIsDroped } = dropdownMenusState;
 
   return (
     <NavbarContainer>
@@ -65,13 +118,16 @@ const Navbar = function () {
       >
         <Search className={classes.navbar__search} />
         <MenuList className={classes['navbar__menu-list']} isRow={true}>
-          <MenuListItem className={classes['navbar__menu-list-item']}>
+          <MenuListItem
+            className={classes['navbar__menu-list-item']}
+            ref={gamesNavbarLinkRef}
+          >
             <NavbarLink
               id="games-navbar"
               data-section="games"
               href="#"
-              onClick={togleGames}
-              isPrimary={gamesIsDrop}
+              onClick={dropGamesMenuHandler}
+              isPrimary={gamesMenuIsDroped}
             >
               <div className={classes.navbar__content}>
                 <svg
@@ -86,16 +142,24 @@ const Navbar = function () {
               </div>
             </NavbarLink>
 
-            {gamesIsDrop && <DropDownMenu links={dropdownGamesLinks} />}
+            {gamesMenuIsDroped && (
+              <DropDownMenu
+                onClick={dropdownMenuLinkClickHandler}
+                links={dropdownGamesLinks}
+              />
+            )}
           </MenuListItem>
 
-          <MenuListItem className={classes['navbar__menu-list-item']}>
+          <MenuListItem
+            className={classes['navbar__menu-list-item']}
+            ref={databaseNavbarLinkRef}
+          >
             <NavbarLink
               id="database-navbar"
               data-section="database"
               href="#"
-              onClick={togleDatabase}
-              isPrimary={databaseIsDrop}
+              onClick={dropDatabaseMenuHandler}
+              isPrimary={databaseMenuIsDroped}
             >
               <div className={classes.navbar__content}>
                 <svg
@@ -110,7 +174,12 @@ const Navbar = function () {
               </div>
             </NavbarLink>
 
-            {databaseIsDrop && <DropDownMenu links={dropdownDatabaseLinks} />}
+            {databaseMenuIsDroped && (
+              <DropDownMenu
+                onClick={dropdownMenuLinkClickHandler}
+                links={dropdownDatabaseLinks}
+              />
+            )}
           </MenuListItem>
         </MenuList>
       </nav>

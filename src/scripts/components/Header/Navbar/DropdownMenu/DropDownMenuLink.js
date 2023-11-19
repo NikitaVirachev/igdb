@@ -5,7 +5,11 @@ import DropDownMenuIcon from './DropDownMenuIcon';
 
 const DropDownMenuLink = function (props) {
   return (
-    <a className={classes['dropdown-menu-link']} href={props.href}>
+    <a
+      className={classes['dropdown-menu-link']}
+      href={props.href}
+      onClick={props.onClick}
+    >
       <DropDownMenuIcon icon={props.imageHref} />
       {props.children}
     </a>

@@ -15,9 +15,7 @@ const NavbarLink = function (props) {
       onClick={props.onClick}
     >
       <div className={classes['navbar-link__content']}>
-        <svg
-          className={`${classes['navbar-link__icon']} ${classes['navbar-link__icon--games']}`}
-        >
+        <svg className={classes['navbar-link__icon']}>
           <use xlinkHref={`${sprite}#${props.icon}`}></use>
         </svg>
         <span className={classes['navbar-link__title']}>{props.name}</span>

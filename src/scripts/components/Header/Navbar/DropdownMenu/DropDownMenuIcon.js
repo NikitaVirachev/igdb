@@ -1,7 +1,7 @@
 import React from 'react';
 
 import classes from './DropDownMenuIcon.module.scss';
-import sprite from '../../../../../img/dropdown-menu-sprite.svg';
+import sprite from '../../../../../img/header-sprite.svg';
 
 const DropDownMenuIcon = function (props) {
   return (

@@ -49,9 +49,20 @@ const dropdownDatabaseLinks = [
   },
 ];
 
+const dropdownCommunityLinks = [
+  {
+    id: 'communityLinks1',
+    links: [
+      { name: ' Karma Hunters ', imageHref: 'icon-pie-chart', href: '#' },
+      { name: ' Discord ', imageHref: 'icon-discord', href: '#' },
+    ],
+  },
+];
+
 const initialDropdownMenusState = {
   gamesMenuIsDroped: false,
   databaseMenuIsDroped: false,
+  communityMenuIsDroped: false,
 };
 
 const dropdownMenusReducer = (state, action) => {
@@ -59,11 +70,19 @@ const dropdownMenusReducer = (state, action) => {
     return {
       gamesMenuIsDroped: true,
       databaseMenuIsDroped: false,
+      communityMenuIsDroped: false,
     };
   if (action.type === 'DROP_DATABASE_MENU')
     return {
       gamesMenuIsDroped: false,
       databaseMenuIsDroped: true,
+      communityMenuIsDroped: false,
+    };
+  if (action.type === 'DROP_COMMUNITY_MENU')
+    return {
+      gamesMenuIsDroped: false,
+      databaseMenuIsDroped: false,
+      communityMenuIsDroped: true,
     };
   return initialDropdownMenusState;
 };
@@ -71,6 +90,7 @@ const dropdownMenusReducer = (state, action) => {
 const Navbar = function () {
   const gamesNavbarLinkRef = useRef();
   const databaseNavbarLinkRef = useRef();
+  const communityNavbarLinkRef = useRef();
 
   const [dropdownMenusState, dispatchDropdownMenusState] = useReducer(
     dropdownMenusReducer,
@@ -82,7 +102,8 @@ const Navbar = function () {
       event.preventDefault();
       if (
         gamesNavbarLinkRef.current.contains(event.target) ||
-        databaseNavbarLinkRef.current.contains(event.target)
+        databaseNavbarLinkRef.current.contains(event.target) ||
+        communityNavbarLinkRef.current.contains(event.target)
       )
         return;
 
@@ -100,6 +121,11 @@ const Navbar = function () {
     dispatchDropdownMenusState({ type: 'DROP_DATABASE_MENU' });
   };
 
+  const dropCommunityMenuHandler = (event) => {
+    event.preventDefault();
+    dispatchDropdownMenusState({ type: 'DROP_COMMUNITY_MENU' });
+  };
+
   const dropdownMenuLinkClickHandler = (event) => {
     event.preventDefault();
     dispatchDropdownMenusState({ type: 'DROP_ALL' });
@@ -108,6 +134,7 @@ const Navbar = function () {
 
   const { gamesMenuIsDroped } = dropdownMenusState;
   const { databaseMenuIsDroped } = dropdownMenusState;
+  const { communityMenuIsDroped } = dropdownMenusState;
 
   return (
     <NavbarContainer>
@@ -157,6 +184,28 @@ const Navbar = function () {
               <DropDownMenu
                 onClick={dropdownMenuLinkClickHandler}
                 links={dropdownDatabaseLinks}
+              />
+            )}
+          </MenuListItem>
+
+          <MenuListItem
+            className={classes['navbar__menu-list-item']}
+            ref={communityNavbarLinkRef}
+          >
+            <NavbarLink
+              id="community-navbar"
+              data-section="community"
+              href="#"
+              onClick={dropCommunityMenuHandler}
+              isPrimary={communityMenuIsDroped}
+              name={'community'}
+              icon={'icon-group'}
+            />
+
+            {communityMenuIsDroped && (
+              <DropDownMenu
+                onClick={dropdownMenuLinkClickHandler}
+                links={dropdownCommunityLinks}
               />
             )}
           </MenuListItem>

@@ -14,4 +14,20 @@ const Input = function (props) {
   );
 };
 
+export const Select = function (props) {
+  return (
+    <select
+      name={props.name}
+      id={props.id}
+      className={`${props.className} ${classes.input}`}
+    >
+      {props.options.map((option) => (
+        <option key={option.value} value={option.value}>
+          {option.name}
+        </option>
+      ))}
+    </select>
+  );
+};
+
 export default Input;

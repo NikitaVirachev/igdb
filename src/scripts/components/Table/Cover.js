@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-import classes from './CoverImage.module.scss';
+import classes from './Cover.module.scss';
 import CoverStub from './CoverStub';
 
-const CoverImage = function (props) {
+const Cover = function (props) {
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
@@ -18,4 +18,4 @@ const CoverImage = function (props) {
   );
 };
 
-export default CoverImage;
+export default Cover;

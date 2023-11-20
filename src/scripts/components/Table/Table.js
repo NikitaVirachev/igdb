@@ -1,10 +1,11 @@
 import React from 'react';
 
 import classes from './Table.module.scss';
+import TableRow from './TableRow';
 
 const Table = function (props) {
   return (
-    <table id="table" className={`${classes.table} ${props.className}`}>
+    <table id={props.id} className={`${classes.table} ${props.className}`}>
       <thead>
         <tr>
           <th>#</th>
@@ -13,7 +14,19 @@ const Table = function (props) {
           <th>Score</th>
         </tr>
       </thead>
-      <tbody></tbody>
+      <tbody>
+        {props.rows.map((row) => (
+          <TableRow
+            key={row.id}
+            name={row.name}
+            number={row.number}
+            url={row.url}
+            imageURL={row.imageURL}
+            year={row.year}
+            score={row.score}
+          />
+        ))}
+      </tbody>
     </table>
   );
 };

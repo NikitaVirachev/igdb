@@ -1,0 +1,16 @@
+@import '../../scss/abstracts/mixins';
+@import '../../scss/abstracts/variables';
+
+.column {
+  max-width: var(--width-page);
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template: auto auto / 1fr;
+  column-gap: 2rem;
+
+  @include respondMin(laptopS) {
+    grid-template: 1fr auto / 1fr 26.55rem;
+  }
+}

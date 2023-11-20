@@ -3,7 +3,7 @@ import * as model from './model.js';
 // import navbarView from './views/menu/navbarView.js';
 // import dropdownMenuView from './views/menu/dropdownMenuView.js';
 // import loginView from './views/menu/loginView.js';
-import tableView from './views/tableView.js';
+// import tableView from './views/tableView.js';
 
 const controlSubmitSearchForm = function (e) {
   e.preventDefault();
@@ -61,12 +61,12 @@ export const init = async function () {
   // window.addEventListener('click', controlMenuClick);
   // navbarView.addHandleBurgerBtnClick(controlNavbarBurgerBtnClick);
   // loginView.addHandleMenuClick(controlLoginBtnClick);
-  try {
-    await model.getAccessToken();
-    const games = await model.getTopGames();
-    tableView.createTable(games);
-    await model.getGameCovers(games, controllSetImagesSrc);
-  } catch (error) {
-    console.error(`${error} 💥`);
-  }
+  // try {
+  //   await model.getAccessToken();
+  //   const games = await model.getTopGames();
+  //   tableView.createTable(games);
+  //   await model.getGameCovers(games, controllSetImagesSrc);
+  // } catch (error) {
+  //   console.error(`${error} 💥`);
+  // }
 };

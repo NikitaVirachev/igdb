@@ -1,16 +1,6 @@
 @import './abstracts/mixins';
 @import './abstracts/variables';
 
+@import './base/reset';
 @import './base/typography';
 @import './base/utilites';
-
-@import './layout/content';
-@import './layout/main-container';
-@import './layout/main';
-@import './layout/wrapper';
-
-@import './components/menu-list';
-@import './components/star';
-@import './components/table';
-
-@import './pages/top-games';

@@ -13,12 +13,4 @@
   &--row {
     flex-direction: row;
   }
-
-  &--navbar {
-    @include respondMax(laptopXS) {
-      flex-direction: column;
-      align-items: start;
-      gap: 1rem;
-    }
-  }
 }

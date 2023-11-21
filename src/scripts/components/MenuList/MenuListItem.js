@@ -3,8 +3,10 @@ import React from 'react';
 import classes from './MenuListItem.module.scss';
 
 const MenuListItem = React.forwardRef(function (props, ref) {
+  const itemClasses = `${classes['menu-list-item']} ${props.className}`;
+
   return (
-    <li className={`${classes['menu-list-item']} ${props.className}`} ref={ref}>
+    <li className={itemClasses} ref={ref}>
       {props.children}
     </li>
   );

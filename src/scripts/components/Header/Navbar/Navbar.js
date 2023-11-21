@@ -184,20 +184,18 @@ const Navbar = function (props) {
   const { communityMenuIsDroped } = dropdownMenusState;
   const { helpMenuIsDroped } = dropdownMenusState;
 
+  const navbarClasses = `
+    ${classes.navbar}
+    ${classes['navbar__menu-list']}
+    ${props.isCollapsed ? classes['navbar--collapsed'] : ''}
+  `;
+
   return (
     <NavbarContainer>
-      <nav
-        id="navbar"
-        className={`${classes.navbar} ${
-          props.isCollapsed ? classes['navbar--collapsed'] : ''
-        }`}
-      >
+      <nav id="navbar" className={navbarClasses}>
         <Search className={classes.navbar__search} />
-        <MenuList className={classes['navbar__menu-list']} isRow={true}>
-          <MenuListItem
-            className={classes['navbar__menu-list-item']}
-            ref={gamesNavbarLinkRef}
-          >
+        <MenuList className={classes['navbar__menu-list-items']} isRow={true}>
+          <MenuListItem ref={gamesNavbarLinkRef}>
             <NavbarLink
               id="games-navbar"
               data-section="games"
@@ -216,10 +214,7 @@ const Navbar = function (props) {
             )}
           </MenuListItem>
 
-          <MenuListItem
-            className={classes['navbar__menu-list-item']}
-            ref={databaseNavbarLinkRef}
-          >
+          <MenuListItem ref={databaseNavbarLinkRef}>
             <NavbarLink
               id="database-navbar"
               data-section="database"
@@ -238,10 +233,7 @@ const Navbar = function (props) {
             )}
           </MenuListItem>
 
-          <MenuListItem
-            className={classes['navbar__menu-list-item']}
-            ref={communityNavbarLinkRef}
-          >
+          <MenuListItem ref={communityNavbarLinkRef}>
             <NavbarLink
               id="community-navbar"
               data-section="community"
@@ -260,10 +252,7 @@ const Navbar = function (props) {
             )}
           </MenuListItem>
 
-          <MenuListItem
-            className={classes['navbar__menu-list-item']}
-            ref={helpNavbarLinkRef}
-          >
+          <MenuListItem ref={helpNavbarLinkRef}>
             <NavbarLink
               id="help-navbar"
               data-section="help"

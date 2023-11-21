@@ -1,7 +1,7 @@
 import React from 'react';
 
 import classes from './NavbarLink.module.scss';
-import sprite from '../../../../img/header-sprite.svg';
+import sprite from '../../../../assets/img/header-sprite.svg';
 
 const NavbarLink = function (props) {
   return (

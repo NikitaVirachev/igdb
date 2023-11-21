@@ -2,7 +2,7 @@ import React from 'react';
 
 import classes from './Search.module.scss';
 import Input from '../../Form/Input';
-import sprite from '../../../../img/header-sprite.svg';
+import sprite from '../../../../assets/img/header-sprite.svg';
 
 const Search = function (props) {
   return (

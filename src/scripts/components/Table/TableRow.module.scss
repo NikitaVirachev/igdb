@@ -2,13 +2,6 @@
 @import '../../../scss/abstracts/variables';
 
 .table-row {
-  tbody {
-    td {
-      padding: 0.5rem;
-      border-top: 1px solid var(--light-grey-color-3);
-    }
-  }
-
   &__number,
   &__score {
     margin: 1rem 0;

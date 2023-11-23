@@ -47,4 +47,11 @@
       color: rgba(0, 0, 0, 0.57);
     }
   }
+
+  tbody {
+    td {
+      padding: 0.5rem;
+      border-top: 1px solid var(--light-grey-color-3);
+    }
+  }
 }

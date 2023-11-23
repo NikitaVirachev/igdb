@@ -39,7 +39,40 @@ const useHttp = function () {
     setIsLoading(false);
   }, []);
 
-  return { isLoading, error, getJSON, getHeaders };
+  const waitUntil = useCallback(async (queue, callback, resultsFlow) => {
+    let resultArray = [];
+    const queueLength = queue.length;
+    return new Promise((resolve) => {
+      let intervalId = null;
+      intervalId = setInterval(async () => {
+        let limitValues = [];
+        while (limitValues.length < state.api.rateLimit && !queue.isEmpty)
+          limitValues.push(queue.dequeue());
+        limitValues = await Promise.all(
+          limitValues.map(async (value) => await callback(value))
+        );
+        resultsFlow(limitValues);
+        resultArray = resultArray.concat(limitValues);
+        if (resultArray.length === queueLength) {
+          resolve(resultArray);
+          clearInterval(intervalId);
+        }
+      }, 1000);
+    });
+  }, []);
+
+  const getImage = useCallback(async (url) => {
+    try {
+      const response = await fetch(url);
+      if (!response.ok)
+        throw new HttpError(errorMsg, response.ok, response.status);
+      return response.blob();
+    } catch (error) {
+      throw error;
+    }
+  }, []);
+
+  return { isLoading, error, getJSON, getHeaders, waitUntil, getImage };
 };
 
 export default useHttp;

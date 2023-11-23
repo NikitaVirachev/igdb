@@ -21,7 +21,6 @@ const Table = function (props) {
             name={row.name}
             number={row.number}
             url={row.url}
-            imageURL={row.imageURL}
             year={row.year}
             score={row.score}
           />

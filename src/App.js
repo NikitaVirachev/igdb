@@ -6,7 +6,6 @@ import Wrapper from './scripts/Layout/Wrapper.js';
 import Column from './scripts/Layout/Column.js';
 import Footer from './scripts/components/Footer/Footer.js';
 import TopGames from './scripts/pages/TopGames.js';
-
 import classes from './App.module.scss';
 import { getNewAccessToken } from './scripts/store/access-token-actions.js';
 

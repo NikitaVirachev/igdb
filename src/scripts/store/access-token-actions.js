@@ -1,12 +1,13 @@
 import { accessTokenActions } from './access-token-slice';
+import * as params from '../constants/global';
 
 export const getNewAccessToken = function (apiConfig) {
   return async (dispatch) => {
     const requestOptions = {
       method: 'POST',
       body: new URLSearchParams({
-        client_id: apiConfig.clientId,
-        client_secret: apiConfig.clientSecret,
+        client_id: params.CLIENT_ID,
+        client_secret: params.CLIENT_SECRET,
         grant_type: 'client_credentials',
       }),
     };

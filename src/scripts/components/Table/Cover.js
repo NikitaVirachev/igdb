@@ -8,7 +8,7 @@ const Cover = function (props) {
 
   return (
     <a href={props.href}>
-      <div class={classes.cover}>
+      <div className={classes.cover}>
         {isLoaded && (
           <img src={props.imageURL} alt={`Cover of ${props.name}`} />
         )}

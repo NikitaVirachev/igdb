@@ -1,5 +1,5 @@
-import HttpError from './HttpError';
-import Queue from './Queue';
+import HttpError from './libs/HttpError';
+import Queue from './libs/Queue';
 
 export let state = {
   api: {

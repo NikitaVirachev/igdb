@@ -11,7 +11,7 @@ const TableRow = function (props) {
         <h4 className={classes['table-row__number']}>{props.number}</h4>
       </td>
       <td>
-        <Cover href={props.url} name={props.name} />
+        <Cover href={props.url} name={props.name} coverId={props.coverId} />
       </td>
       <td>
         <div className={classes['table-row__name']}>

@@ -14,12 +14,7 @@ const App = function () {
   const tokenIsLoaded = useSelector((state) => state.access.isLoadedStatus);
 
   useEffect(() => {
-    const apiConfig = {
-      clientId: '6gcjmymrpono4un901t7k8r4nz3hkh',
-      clientSecret: 'h0s7kr8rahe6q33vcbv4e2fuh36hdp',
-    };
-
-    dispatch(getNewAccessToken(apiConfig));
+    dispatch(getNewAccessToken());
   }, []);
 
   return (

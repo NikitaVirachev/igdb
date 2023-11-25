@@ -10,7 +10,7 @@ const Input = function (props) {
       placeholder={props.placeholder}
       name={props.name}
       id={props.id}
-      value={props.value}
+      defaultValue={props.value}
     />
   );
 };

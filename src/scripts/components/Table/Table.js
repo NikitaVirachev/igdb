@@ -23,6 +23,7 @@ const Table = function (props) {
             url={row.url}
             year={row.year}
             score={row.score}
+            coverId={row.cover}
           />
         ))}
       </tbody>

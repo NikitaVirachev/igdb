@@ -1,11 +1,14 @@
 import { useState, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 
+import { getNewAccessToken } from '../store/access-token-actions';
 import HttpError from '../libs/HttpError';
 import * as params from '../constants/global';
 
 const useHttp = function () {
   let [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const dispatch = useDispatch();
 
   const getHeaders = useCallback((accessToken) => {
     const headers = new Headers();
@@ -34,45 +37,21 @@ const useHttp = function () {
       const data = await response.json();
       applyData(data);
     } catch (error) {
-      setError(error);
+      if (error instanceof HttpError && error.statusCode === 429) {
+        // console.error('Too Many Requests');
+        setTimeout(() => getJSON(requestConfig, applyData), 1000);
+      } else if (error instanceof HttpError && error.statusCode === 401) {
+        console.error('Token invalid');
+        dispatch(getNewAccessToken());
+        getJSON(requestConfig, applyData);
+      } else {
+        setError(error);
+      }
     }
     setIsLoading(false);
   }, []);
 
-  const waitUntil = useCallback(async (queue, callback, resultsFlow) => {
-    let resultArray = [];
-    const queueLength = queue.length;
-    return new Promise((resolve) => {
-      let intervalId = null;
-      intervalId = setInterval(async () => {
-        let limitValues = [];
-        while (limitValues.length < state.api.rateLimit && !queue.isEmpty)
-          limitValues.push(queue.dequeue());
-        limitValues = await Promise.all(
-          limitValues.map(async (value) => await callback(value))
-        );
-        resultsFlow(limitValues);
-        resultArray = resultArray.concat(limitValues);
-        if (resultArray.length === queueLength) {
-          resolve(resultArray);
-          clearInterval(intervalId);
-        }
-      }, 1000);
-    });
-  }, []);
-
-  const getImage = useCallback(async (url) => {
-    try {
-      const response = await fetch(url);
-      if (!response.ok)
-        throw new HttpError(errorMsg, response.ok, response.status);
-      return response.blob();
-    } catch (error) {
-      throw error;
-    }
-  }, []);
-
-  return { isLoading, error, getJSON, getHeaders, waitUntil, getImage };
+  return { isLoading, error, getJSON, getHeaders };
 };
 
 export default useHttp;

@@ -1,7 +1,7 @@
 import { accessTokenActions } from './access-token-slice';
 import * as params from '../constants/global';
 
-export const getNewAccessToken = function (apiConfig) {
+export const getNewAccessToken = function () {
   return async (dispatch) => {
     const requestOptions = {
       method: 'POST',

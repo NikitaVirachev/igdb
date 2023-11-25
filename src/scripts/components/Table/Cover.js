@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import classes from './Cover.module.scss';
 import CoverStub from './CoverStub';
@@ -8,65 +8,52 @@ import * as params from '../../constants/global';
 
 const Cover = function (props) {
   const { isLoading, error, getJSON, getHeaders } = useHttp();
-  const dispath = useDispatch();
   const accessToken = useSelector((state) => state.access.accessToken);
   const [imageURL, setImageURL] = useState(null);
+  const coverId = props.coverId;
 
   useEffect(() => {
-    const getGameCover = async function (coverID) {
+    const getImage = async (cover) => {
       try {
-        const raw = `fields image_id;where id = ${coverID};`;
-        const requestOptions = {
-          method: 'POST',
-          headers: state.api.headers,
-          body: raw,
-        };
-        const url = `${state.api.baseURL}/covers`;
-
-        const cover = await getJSON(
-          url,
-          requestOptions,
-          'Failed request to game cover'
-        );
-        return cover;
+        const [coverObj] = cover;
+        const hash = coverObj.image_id;
+        const url = `${params.SMALL_COVER_URL}/${hash}.jpg`;
+        const response = await fetch(url);
+        if (!response.ok)
+          throw new HttpError(errorMsg, response.ok, response.status);
+        const imageBlob = await response.blob();
+        const imageURL = URL.createObjectURL(imageBlob);
+        setImageURL(imageURL);
       } catch (error) {
         console.error(`${error} 💥`);
-        if (error instanceof HttpError && error.statusCode === 401) {
-          console.error('Token invalid');
-          await getAccessToken();
-          return getGameCover(coverID);
-        } else {
-          throw error; // Переброс остальных ошибок
-        }
       }
     };
 
-    const getImageURL = async function (game) {
-      const [cover] = await getGameCover(game.cover);
-      const hash = cover.image_id;
-      const url = `${params.SMALL_COVER_URL}/${hash}.jpg`;
-      const imageBlob = await getImage(url);
-      const imageURL = URL.createObjectURL(imageBlob);
-      return imageURL;
+    const getGameCover = async function (coverID) {
+      try {
+        const raw = `fields image_id;where id = ${coverID};`;
+        const requestConfig = {
+          url: `${params.BASE_URL}/covers`,
+          errorMsg: 'Failed request to game cover',
+          method: 'POST',
+          headers: getHeaders(accessToken),
+          body: raw,
+        };
+
+        getJSON(requestConfig, getImage);
+      } catch (error) {
+        console.error(`${error} 💥`);
+      }
     };
 
-    const getGameCovers = async function (coverID, gameCoversHandler) {
-      const gamesQueue = new Queue();
-      games.forEach((game) => {
-        gamesQueue.enqueue(game);
-      });
-
-      return await waitUntil(gamesQueue, getImageURL, gameCoversHandler);
-    };
-
-    // await getGameCovers(props.coverID, controllSetImagesSrc);
-  }, []);
+    getGameCover(coverId);
+  }, [coverId]);
 
   return (
     <a href={props.href}>
       <div className={classes.cover}>
-        {isLoading && <img src={imageURL} alt={`Cover of ${props.name}`} />}
-        {!isLoading && <CoverStub />}
+        {imageURL && <img src={imageURL} alt={`Cover of ${props.name}`} />}
+        {!imageURL && <CoverStub />}
       </div>
     </a>
   );

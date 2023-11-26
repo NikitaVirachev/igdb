@@ -7,7 +7,7 @@ import FooterMobileBtn from './FooterMobileBtn';
 import FooterLinks from './FooterLinks';
 import FooterLink from './FooterLink';
 
-const Footer = function () {
+const Footer = function (props) {
   const scrollToTop = function () {
     window.scrollTo({
       top: 0,
@@ -110,8 +110,10 @@ const Footer = function () {
     },
   ];
 
+  const classNames = `${classes.footer} ${props.className}`;
+
   return (
-    <footer id="footer" className={classes.footer}>
+    <footer id="footer" className={classNames}>
       <div className={classes.footer__container}>
         <FooterMobileBtns>
           {mobileBtns.map((btn) => (

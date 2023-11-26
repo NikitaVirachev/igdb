@@ -22,7 +22,7 @@ const dropdownGamesLinks = [
     links: [
       { name: ' Coming Soon ', imageHref: 'icon-hourglass-3', href: '#' },
       { name: ' Recently Released ', imageHref: 'icon-truck', href: '#' },
-      { name: ' Top 100 ', imageHref: 'icon-line-chart', href: '#' },
+      { name: ' Top 100 ', imageHref: 'icon-line-chart', href: '/top-100' },
     ],
   },
   {
@@ -174,7 +174,7 @@ const Navbar = function (props) {
   };
 
   const dropdownMenuLinkClickHandler = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     dispatchDropdownMenusState({ type: 'DROP_ALL' });
     console.log(event.target.href);
   };

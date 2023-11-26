@@ -1,0 +1,43 @@
+$light-grey-color: #f3f4f6;
+$grey-color: #939393;
+$dark-grey-color: #333;
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: $light-grey-color;
+}
+
+.error {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+
+  &__dialog {
+    margin: 8% auto;
+    width: 45rem;
+  }
+
+  p {
+    margin: 1.7rem 0;
+    padding: 0 5%;
+  }
+
+  &__title {
+    color: $dark-grey-color;
+    font-size: 2rem;
+  }
+
+  &__title ~ p {
+    color: $grey-color;
+    font-size: 1.7rem;
+  }
+
+  &__redirect {
+    margin-top: 5rem;
+  }
+
+  &__link:link,
+  &__link:active {
+    font-size: 1.2rem;
+  }
+}

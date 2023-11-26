@@ -8,10 +8,11 @@ import './scss/main.scss';
 import App from './App.js';
 import store from './scripts/store/index.js';
 
-const appContainer = document.getElementById('app-container');
-const appRoot = createRoot(appContainer);
+const appRoot = createRoot(document.getElementById('root'));
 appRoot.render(
-  <Provider store={store}>
-    <App />
-  </Provider>
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>
 );

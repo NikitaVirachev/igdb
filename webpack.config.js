@@ -18,6 +18,7 @@ module.exports = {
     port: 8080,
     open: true,
     hot: true,
+    historyApiFallback: true,
   },
   entry: path.resolve(__dirname, 'src', 'index.js'),
   output: {

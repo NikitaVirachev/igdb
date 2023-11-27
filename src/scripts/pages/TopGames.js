@@ -47,7 +47,7 @@ const TopGames = function () {
     };
 
     getTopGames();
-  }, [accessToken, getJSON, getHeaders]);
+  }, [accessToken]);
 
   return (
     <React.Fragment>

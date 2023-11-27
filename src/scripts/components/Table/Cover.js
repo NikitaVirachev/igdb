@@ -7,7 +7,7 @@ import useHttp from '../../hooks/useHttp';
 import * as params from '../../constants/global';
 
 const Cover = function (props) {
-  const { isLoading, error, getJSON, getHeaders } = useHttp();
+  const { isLoading, error, getJSON, getHeaders, controller } = useHttp();
   const accessToken = useSelector((state) => state.access.accessToken);
   const [imageURL, setImageURL] = useState(null);
   const coverId = props.coverId;
@@ -47,6 +47,8 @@ const Cover = function (props) {
     };
 
     getGameCover(coverId);
+
+    return () => controller.abort();
   }, [coverId]);
 
   return (

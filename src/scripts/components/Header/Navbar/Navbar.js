@@ -174,9 +174,7 @@ const Navbar = function (props) {
   };
 
   const dropdownMenuLinkClickHandler = (event) => {
-    // event.preventDefault();
     dispatchDropdownMenusState({ type: 'DROP_ALL' });
-    console.log(event.target.href);
   };
 
   const { gamesMenuIsDroped } = dropdownMenusState;

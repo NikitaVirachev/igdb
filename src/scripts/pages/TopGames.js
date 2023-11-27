@@ -10,11 +10,15 @@ import Table from '../components/Table/Table';
 import Aside from '../components/Aside/Aside';
 import useHttp from '../hooks/useHttp';
 import * as params from '../constants/global';
+import { loadingActions } from '../store/loading-slice.js';
 
 const TopGames = function () {
+  const dispatch = useDispatch();
   const [games, setGames] = useState([]);
   const accessToken = useSelector((state) => state.access.accessToken);
   const { isLoading, error, getJSON, getHeaders } = useHttp();
+
+  dispatch(loadingActions.updateGameLoading(isLoading));
 
   useEffect(() => {
     const transformGames = (games) => {
@@ -58,7 +62,6 @@ const TopGames = function () {
           <div className={classes['top-games__filter']}>
             <Filter />
           </div>
-          {isLoading && <p>Games is Loading</p>}
           {!isLoading && <Table id="tog-100-games-table" rows={games} />}
         </Content>
       </main>

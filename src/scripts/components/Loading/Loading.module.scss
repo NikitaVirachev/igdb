@@ -1,0 +1,26 @@
+@import '../../../scss/abstracts/variables.scss';
+
+.loading {
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: linear-gradient(
+    to right,
+    var(--light-grey-color-1) 8%,
+    var(--dark-primary-color) 18%,
+    var(--light-grey-color-1) 33%
+  );
+  background-size: 800px;
+  height: 0.5rem;
+}
+
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -800px 0;
+  }
+  100% {
+    background-position: 800px 0;
+  }
+}

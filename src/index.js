@@ -10,9 +10,7 @@ import store from './scripts/store/index.js';
 
 const appRoot = createRoot(document.getElementById('root'));
 appRoot.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <App />
+  </Provider>
 );

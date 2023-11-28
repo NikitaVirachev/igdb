@@ -1,0 +1,26 @@
+@import '../../../scss/abstracts/mixins';
+@import '../../../scss/abstracts/variables';
+
+.aside-link {
+  &:link,
+  &:visited {
+    text-decoration: none;
+    color: var(--dark-grey-blue-color-3);
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    font-size: 1.3rem;
+    line-height: 1.85rem;
+    display: block;
+    padding: 1rem 1.5rem;
+  }
+
+  &:hover,
+  &:active {
+    background: var(--light-grey-color-2);
+  }
+
+  &--active:link,
+  &--active:visited {
+    color: var(--white-color);
+    background: var(--primary-color);
+  }
+}

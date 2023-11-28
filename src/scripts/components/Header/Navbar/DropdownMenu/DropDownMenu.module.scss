@@ -1,0 +1,47 @@
+@import '../../../../../scss/abstracts/mixins';
+@import '../../../../../scss/abstracts/variables';
+
+.dropdown-menu {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 15rem;
+
+  display: flex;
+  flex-direction: column;
+
+  background: var(--primary-color);
+
+  &--hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  @include respondMax(laptopXS) {
+    position: relative;
+    display: block;
+    top: auto;
+    left: auto;
+    background: inherit;
+
+    &--hide {
+      display: none;
+    }
+  }
+
+  &__content-block {
+    padding: 0.5rem 0;
+  }
+
+  &__separator {
+    width: 100%;
+    height: 0.1rem;
+    background: var(--white-color);
+    margin: 0.3rem 0;
+
+    @include respondMax(laptopXS) {
+      background: inherit;
+    }
+  }
+}

@@ -1,0 +1,41 @@
+@import '../../../../scss/abstracts/mixins';
+@import '../../../../scss/abstracts/variables';
+
+.navbar {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 2rem;
+  height: 100%;
+
+  @include respondMax(laptopXS) {
+    margin-top: 0;
+    transition: all 1s;
+    padding: 1rem;
+
+    &--collapsed {
+      margin-top: -100%;
+    }
+  }
+
+  &__search {
+    align-self: center;
+
+    @include respondMax(laptopXS) {
+      align-self: start;
+    }
+  }
+
+  &__menu-list > ul {
+    @include respondMax(laptopXS) {
+      flex-direction: column;
+      align-items: start;
+      gap: 1rem;
+    }
+  }
+
+  &__menu-list-items > li {
+    @include respondMax(laptopXS) {
+      flex-direction: column;
+    }
+  }
+}

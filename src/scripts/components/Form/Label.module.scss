@@ -1,0 +1,14 @@
+@import '../../../scss/abstracts/mixins';
+@import '../../../scss/abstracts/variables';
+
+.label {
+  font-weight: 700;
+  color: var(--dark-grey-blue-color-2);
+  font-size: 1.3rem;
+  max-width: 100%;
+  line-height: 1.8rem;
+
+  &--dark-grey-blue-color-2 {
+    color: var(--dark-grey-blue-color-2);
+  }
+}

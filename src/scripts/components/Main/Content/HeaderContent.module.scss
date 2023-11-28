@@ -1,0 +1,9 @@
+@import '../../../../scss/abstracts/mixins';
+@import '../../../../scss/abstracts/variables';
+
+.header {
+  margin: 2.5rem 0;
+  font-size: 2.4rem;
+  font-weight: 400;
+  color: var(--dark-grey-blue-color-2);
+}

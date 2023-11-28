@@ -1,0 +1,26 @@
+@import '../../../scss/abstracts/mixins';
+@import '../../../scss/abstracts/variables';
+
+.aside {
+  line-height: 1.85rem;
+
+  &__header {
+    font-size: 1.6rem;
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    color: var(--dark-grey-blue-color-2);
+    font-weight: 400;
+    line-height: 1.76rem;
+    margin: 1rem 0;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+  }
+
+  hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-top: 1px solid var(--light-grey-color-2);
+  }
+}

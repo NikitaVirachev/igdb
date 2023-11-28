@@ -1,0 +1,21 @@
+@import '../../../scss/abstracts/mixins';
+@import '../../../scss/abstracts/variables';
+
+.footer {
+  margin: 1.5rem;
+
+  &__container {
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    font-size: 1.3rem;
+    line-height: 1.85rem;
+  }
+
+  &__container {
+    color: var(--medium-dark-color-3);
+    text-align: center;
+
+    @include respondMin(laptopS) {
+      text-align: start;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+@import '../../../scss/abstracts/mixins';
+@import '../../../scss/abstracts/variables';
+
+.footer-mobile-btns {
+  display: flex;
+  justify-content: space-between;
+
+  @include respondMin(laptopS) {
+    display: none;
+  }
+}

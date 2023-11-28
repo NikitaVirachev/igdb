@@ -1,0 +1,17 @@
+@import '../../../scss/abstracts/mixins';
+@import '../../../scss/abstracts/variables';
+
+.input {
+  height: 3.4rem;
+  padding: 0.6rem 1.2rem;
+  font-size: 14px;
+  border: 2px solid var(--light-grey-color-3);
+  border-radius: 0.4rem;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  color: var(--grey-color);
+
+  &:focus {
+    border-color: #9147ff;
+    outline: 0;
+  }
+}

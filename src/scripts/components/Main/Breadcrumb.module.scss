@@ -1,0 +1,33 @@
+@import '../../../scss/abstracts/mixins';
+@import '../../../scss/abstracts/variables';
+
+.breadcrumb {
+  padding: 0.8rem 1.5rem;
+  list-style: none;
+  background: var(--light-grey-color-4);
+  border-radius: 0.4rem;
+
+  &,
+  &__link {
+    font-size: 1.3rem;
+    line-height: 1.8rem;
+    color: var(--medium-dark-color-3);
+  }
+
+  &__link:link,
+  &__link:visited {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+
+  &__link:hover,
+  &__link:active {
+    text-decoration: underline;
+  }
+
+  li:not(:first-child):before {
+    content: '/ ';
+    padding: 0 0.5rem;
+    color: var(--medium-dark-color-5);
+  }
+}

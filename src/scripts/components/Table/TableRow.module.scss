@@ -1,0 +1,57 @@
+@import '../../../scss/abstracts/mixins';
+@import '../../../scss/abstracts/variables';
+
+.table-row {
+  &__number,
+  &__score {
+    margin: 1rem 0;
+    line-height: 1.7rem;
+    font-size: 1.6rem;
+  }
+
+  &__number {
+    color: var(--medium-dark-color-3);
+    font-weight: 700;
+  }
+
+  &__score {
+    font-weight: 400;
+
+    &--purple {
+      color: var(--primary-color);
+    }
+
+    &--muted {
+      color: var(--medium-dark-color-3);
+    }
+  }
+
+  &__name {
+    a:link,
+    a:visited {
+      text-decoration: none;
+      color: var(--primary-color);
+    }
+
+    a:hover,
+    a:active {
+      text-decoration: underline;
+    }
+  }
+
+  &__year {
+    color: var(--medium-dark-color-3);
+    margin-left: 0.5rem;
+  }
+
+  &__rating {
+    margin: 0.5rem 0;
+    display: flex;
+
+    span {
+      font-size: 1.1rem;
+      line-height: 1.5rem;
+      color: var(--medium-dark-color-3);
+    }
+  }
+}

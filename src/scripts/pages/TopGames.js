@@ -18,7 +18,9 @@ const TopGames = function () {
   const accessToken = useSelector((state) => state.access.accessToken);
   const { isLoading, error, getJSON, getHeaders } = useHttp();
 
-  dispatch(loadingActions.updateGameLoading(isLoading));
+  useEffect(() => {
+    dispatch(loadingActions.updateGameLoading(isLoading));
+  }, [isLoading]);
 
   useEffect(() => {
     const transformGames = (games) => {

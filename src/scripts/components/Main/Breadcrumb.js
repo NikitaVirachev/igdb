@@ -1,26 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import classes from './Breadcrumb.module.scss';
 import MenuList from '../MenuList/MenuList';
 
 const Breadcrumb = function () {
-  const toHome = (event) => {
-    event.preventDefault();
-    console.log(event.target.href);
+  const openInNewTab = (event) => {
+    window.open(event.target.href, '_blank', 'noreferrer');
   };
 
   return (
     <MenuList className={classes.breadcrumb} isRow={true}>
       <li>
-        <Link
-          className={classes.breadcrumb__link}
-          target="_blank"
-          to="/"
-          onClick={toHome}
-        >
+        <a href="/" className={classes.breadcrumb__link} onClick={openInNewTab}>
           Home
-        </Link>
+        </a>
       </li>
       <li>Top 100</li>
       <li>Games</li>

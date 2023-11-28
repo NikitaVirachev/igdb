@@ -14,7 +14,9 @@ module.exports = {
   target,
   devtool,
   devServer: {
-    // contentBase: path.join(__dirname, 'dist'),
+    // static: {
+    //   directory: path.resolve(__dirname, 'dist'),
+    // },
     port: 8080,
     open: true,
     hot: true,
@@ -23,6 +25,7 @@ module.exports = {
   entry: path.resolve(__dirname, 'src', 'index.js'),
   output: {
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
     clean: true,
     filename: '[name].[contenthash].js',
     assetModuleFilename: 'assets/[name][ext]',

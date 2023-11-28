@@ -2,18 +2,18 @@ $light-grey-color: #f3f4f6;
 $grey-color: #939393;
 $dark-grey-color: #333;
 
-body {
-  width: 100vw;
-  height: 100vh;
-  background-color: $light-grey-color;
-}
-
 .error {
   text-align: center;
   font-family: 'Open Sans', sans-serif;
+  background-color: $light-grey-color;
+  position: relative;
+  height: 100vh;
 
   &__dialog {
-    margin: 8% auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 45rem;
   }
 
